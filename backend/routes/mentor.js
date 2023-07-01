@@ -21,7 +21,7 @@ Router.delete('/module/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const del = await Module.findByIdAndDelete(id);
-        return res.statusCode(200).json({ success: true, message: "Module deleted Successfully" })
+        return res.status(200).json({ success: true, message: "Module deleted Successfully" })
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
     }
@@ -40,6 +40,7 @@ Router.post('/session/:moduleId', async (req, res) => {
             upsert: true
         })
 
+
         return res.status(200).json({  session: newSession, success: true, message: "Session created Successfully" });
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
@@ -50,7 +51,7 @@ Router.delete('/session/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const del = await SessionsModel.findByIdAndDelete(id);
-        return res.statusCode(200).json({ success: true, message: "Session deleted Successfully" })
+        return res.status(200).json({ success: true, message: "Session deleted Successfully" })
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
     }
@@ -123,8 +124,8 @@ Router.get('/batch',verifyMentor, async (req, res) => {
 
 Router.get('/mentee/:menteeId', async (req, res) => {
     try {
-        const { mentorId } = req.params
-        const Mentee = await MenteeModel.findById(mentorId);
+        const { menteeId } = req.params
+        const Mentee = await MenteeModel.findById(menteeId);
 
 
         return res.status(200).json({  mentee: Mentee, success: true, message: "Mentee fetched Successfully" });
