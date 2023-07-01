@@ -1,22 +1,32 @@
-.mentordashboard{
-width: 100vw;
-height: 100vh;
-background-color: rgb(213, 247, 233);
-display: flex;
+.mentordashboard {
+  width: 100vw;
+  /* height: 100vh; */
+  background-color: rgb(213, 247, 233);
+  display: flex;
+  /* position: fixed; */
 }
 
-.sidebar{
+.sidebar {
   width: 15%;
   border-radius: 20px;
   background-color: rgb(167, 244, 227);
 }
 
-.mainContainer{
+.sidebar_out {
+  width: 15%;
+  border-radius: 20px;
+  background-color: rgb(167, 244, 227);
+  position: fixed;
+  height: 100%;
+}
+
+.mainContainer {
   width: 100%;
   border-radius: 20px;
-  
+  overflow-y: scroll;
+  margin: auto;
 }
-.mentorHeading{
+.mentorHeading {
   margin: 10px;
   border-radius: 12px;
   background-color: rgb(181, 237, 239);
@@ -27,7 +37,12 @@ display: flex;
   font-weight: 900;
 }
 
-.headingDiv{
+.bar-mentor{
+  display: flex;
+  flex-direction: row;
+}
+
+.headingDiv {
   margin: 10px;
   border-radius: 12px;
   background-color: rgb(125, 213, 216);
@@ -37,13 +52,79 @@ display: flex;
   justify-content: center;
 }
 
-.batchHeading{
+.batchHeading {
   font-weight: 700;
 }
 
-.batchBody{
+.batchBody {
   padding: 50px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr ;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 50px;
+  margin: auto;
+  position: relative;
+  left: 100px;
+}
+
+.logoMentor {
+  margin: auto;
+  margin-top: 5px;
+  width: 80%;
+  height: 15%;
+  background-color: #fff;
+  border-radius: 30px;
+}
+
+.sections_mentor {
+  border-radius: 30px;
+  background-color: #83def3;
+  margin: auto;
+  margin-top: 15px;
+  width: 85%;
+  height: 80%;
+}
+
+.mentor_sidebar_names {
+  margin-top: 150px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.mentor_sidebar_ind_names {
+  list-style: none;
+  font-weight: 800;
+  background-color: #fff;
+  border-radius: 20px;
+  margin: auto;
+  position: relative;
+  top: 20px;
+  left: -12px;
+}
+
+.logoMentorh {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logoMentorh1 {
+  font-weight: 900;
+  position: relative;
+  top: 30%;
+}
+
+.logout_mentor {
+  background-color: #fff;
+  border-radius: 20px;
+  font-weight: 900;
+  height: 50px;
+  font-size: larger;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 150px;
+  left: -15px;
 }

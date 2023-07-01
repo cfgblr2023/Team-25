@@ -1,12 +1,12 @@
 // import logo from './logo.svg';
 import "./App.css";
 
-import React, { useEffect, useState } from 'react'
-import{
+import React, { useEffect, useState } from "react";
+import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate
+  Navigate,
 } from "react-router-dom";
 import AdminWrapper from './wrapper/AdminWrapper';
 import MenteeWrapper from "./wrapper/MenteeWrapper";
@@ -16,11 +16,9 @@ import Tabs from "./components/Tabs";
 import Admin from "./admin/admin";
 import { serviceGet } from "./utils/api";
 import ProtectedRoute from "./wrapper/ProtectedRoute";
+import MentorDashboard from "./mentor/MentorDashboard";
 
 function App() {
- 
-  
-
   return (
     <div className="App">
       <Router>
@@ -47,8 +45,6 @@ function App() {
             {/* <Route path="/batches" element={<Batches />}/> */}
              
 
-            
-            
         </Routes>
       </Router>
     </div>
