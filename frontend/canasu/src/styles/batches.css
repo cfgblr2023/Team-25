@@ -1,0 +1,10 @@
+.Batches {
+   
+    /* height: 100vh; */
+    background-color: rgb(226, 250, 240);
+    height: 100vh;
+  }
+  .Batches-tableRow{
+    cursor: pointer;
+  }
+  
