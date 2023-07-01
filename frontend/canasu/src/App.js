@@ -8,12 +8,7 @@ import{
   Route,
   Navigate
 } from "react-router-dom";
-// import Login from './components/Login';
-import LandingPage from './components/LandingPage';
-import Tabs from './components/Tabs';
 import AdminWrapper from './wrapper/AdminWrapper';
-
-// import Login from './components/Login';
 import LandingPage from "./components/LandingPage";
 import Tabs from "./components/Tabs";
 import Admin from "./admin/admin";
