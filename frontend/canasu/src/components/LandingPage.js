@@ -1,8 +1,13 @@
 import React from "react";
 import "../styles/landingPage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import { useNavigate } from "react-router-dom"
 export default function LandingPage() {
+
+  const navigate = useNavigate();
+  const handleLoginClick = () => {
+    navigate("/tabs")
+  }
   return (
     <>
       <img
@@ -17,7 +22,7 @@ export default function LandingPage() {
           <i>Our vision is to create a world in which all women determine the course of their lives & reach their full potential.</i>
           <div className="row d-flex justify-content-center mt-5">
             <div className="col-6 ">
-            <button type="button" class="btn btn-warning btn-lg">Login</button>
+            <button type="button" class="btn btn-warning btn-lg" onClick={handleLoginClick}>Login</button>
             <button type="button" class="ms-2 btn btn-warning btn-lg">SignUp</button>
             </div>
           </div>
