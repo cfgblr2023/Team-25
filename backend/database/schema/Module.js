@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Session = require('./session.js');
+
 
 const moduleSchema = new mongoose.Schema({
   name: { type: String },
