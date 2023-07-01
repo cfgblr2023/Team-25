@@ -16,8 +16,8 @@ import { serviceGet } from "./utils/api";
 import ProtectedRoute from "./wrapper/ProtectedRoute";
 import MentorDashboard from "./mentor/MentorDashboard";
 import MenteeDashboard from "./mentee/MenteeDashboard";
-import SignUp from "./mentor/SignUp"
-
+import SignUp from "./mentor/SignUp";
+import ModulePage from "./mentor/ModulePage";
 
 function App() {
   return (
@@ -29,6 +29,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/mentor-dashboard" element={<MentorDashboard />} />
           <Route path="/student" element={<MenteeDashboard />} />
+          <Route path="/modules" element={<ModulePage />} />
 
           <Route
             path="/admin"
