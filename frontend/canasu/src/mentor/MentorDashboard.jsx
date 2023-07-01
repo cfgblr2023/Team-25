@@ -4,11 +4,9 @@ import BaseComponent from "bootstrap/js/dist/base-component";
 import BatchCard from "./BatchCard";
 import NavComp from "../components/NavComp";
 
-
 const MentorDashboard = () => {
   return (
     <>
-    
       <div className="mentordashboard">
         {/* <div className="sidebar">
           <div className="logoMentor">
