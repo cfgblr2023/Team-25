@@ -52,7 +52,7 @@ Router.post('/module',async(req, res)=>{
                 const newBatch = await BatchModel.findById(id).populate("Modules");
             
             
-                  return res.status(200).json({ token, admin: newAdmin, success: true , message:"Batch fetched Successfully"});
+                  return res.status(200).json({ token, batch: newBatch, success: true , message:"Batch fetched Successfully"});
             } catch (error) {
                 return res.status(500).json({ message: error.message, success: false });
                 
@@ -65,7 +65,7 @@ Router.post('/module',async(req, res)=>{
             const newBatch = await BatchModel.find({mentor: mentorId}).populate("modules");
         
         
-              return res.status(200).json({ token, admin: newAdmin, success: true , message:"Batch fetched Successfully"});
+              return res.status(200).json({ token, batch: newBatch, success: true , message:"Batch fetched Successfully"});
         } catch (error) {
             return res.status(500).json({ message: error.message, success: false });
             
@@ -78,7 +78,7 @@ Router.post('/module',async(req, res)=>{
                 const Mentee = await MenteeModel.findById(mentorId);
             
             
-                  return res.status(200).json({ token, admin: newAdmin, success: true , message:"Mentee fetched Successfully"});
+                  return res.status(200).json({ token, mente: Mentee, success: true , message:"Mentee fetched Successfully"});
             } catch (error) {
                 return res.status(500).json({ message: error.message, success: false });
                 
@@ -104,3 +104,30 @@ Router.post('/module',async(req, res)=>{
                     
                 }
                 });
+
+                Router.post('/resources',async(req, res)=>{
+                    try {
+                        const newResources = await ResourcesModel.create({...req.body});
+                    
+                    
+                          return res.status(200).json({ token, resource: newResources, success: true , message:"Resources added Successfully"});
+                    } catch (error) {
+                        return res.status(500).json({ message: error.message, success: false });
+                        
+                    }
+                    });
+
+                    Router.get('/resources/:Id',async(req, res)=>{
+                        try {
+                            const {Id} = req.params;
+                            const newResources= await ResourcesModel.findById(Id);
+                        
+                              return res.status(200).json({ token, resource: newResources, success: true , message:"Resources fetched Successfully"});
+                        } catch (error) {
+                            return res.status(500).json({ message: error.message, success: false });
+                            
+                        }
+                        });
+
+
+                        module.exports = Router;

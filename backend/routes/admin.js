@@ -2,6 +2,7 @@ const express = require("express");
 const Module = require("../database/schema/Module");
 const AdminModel = require("../database/schema/admin");
 const BatchModel = require("../database/schema/Batch");
+const ResourcesModel = require("../database/schema/resources");
 
 const Router = express.Router();
 
@@ -60,7 +61,7 @@ Router.post('/add-admin',async(req, res)=>{
             const newBatch = await BatchModel.find({});
         
         
-              return res.status(200).json({ token, admin: newAdmin, success: true , message:"Batch fetched Successfully"});
+              return res.status(200).json({ token, batch: newBatch, success: true , message:"Batch fetched Successfully"});
         } catch (error) {
             return res.status(500).json({ message: error.message, success: false });
             
@@ -73,7 +74,7 @@ Router.post('/add-admin',async(req, res)=>{
             const newBatch = await BatchModel.findById(id).populate("modules");
         
         
-              return res.status(200).json({ token, admin: newAdmin, success: true , message:"Batch fetched Successfully"});
+              return res.status(200).json({ token, batch: newBatch, success: true , message:"Batch fetched Successfully"});
         } catch (error) {
             return res.status(500).json({ message: error.message, success: false });
             
@@ -85,12 +86,35 @@ Router.post('/add-admin',async(req, res)=>{
                 const {batchId} = req.params;
                 const newFeedback= await FeedbackModel.findById(batchId);
             
-                  return res.status(200).json({ token, admin: newAdmin, success: true , message:"Feedback received Successfully"});
+                  return res.status(200).json({ token, feedb: newFeedback, success: true , message:"Feedback received Successfully"});
             } catch (error) {
                 return res.status(500).json({ message: error.message, success: false });
                 
             }
             });
 
+            Router.post('/resources',async(req, res)=>{
+                try {
+                    const newResources = await ResourcesModel.create({...req.body});
+                
+                
+                      return res.status(200).json({ token, resource: newResources, success: true , message:"Resources added Successfully"});
+                } catch (error) {
+                    return res.status(500).json({ message: error.message, success: false });
+                    
+                }
+                });
+
+                Router.get('/resources/:Id',async(req, res)=>{
+                    try {
+                        const {Id} = req.params;
+                        const newResources= await ResourcesModel.findById(Id);
+                    
+                          return res.status(200).json({ token, resource: newResources, success: true , message:"Resources fetched Successfully"});
+                    } catch (error) {
+                        return res.status(500).json({ message: error.message, success: false });
+                        
+                    }
+                    });
 
 module.exports = Router; 
