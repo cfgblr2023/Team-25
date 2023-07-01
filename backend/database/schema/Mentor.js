@@ -17,9 +17,14 @@ const MentorSchema = new mongoose.Schema({
     {
         type: String
     },
+    language:{
+        type: String,
+        lowercase: true,
+        trim: true,
+    },
     status:{
         type:String,
-        default: 'Available'
+        default: 'available'
     }
     },
     {
