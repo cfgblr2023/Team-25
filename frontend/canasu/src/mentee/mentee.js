@@ -1,9 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function mentee() {
-  return (
-    <div>
-      mentee
-    </div>
-  )
+  return <div>mentee</div>;
 }

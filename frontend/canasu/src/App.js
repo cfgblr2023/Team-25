@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
 import React, { useEffect, useState } from 'react'
 import{
@@ -13,6 +13,10 @@ import LandingPage from './components/LandingPage';
 import Tabs from './components/Tabs';
 import AdminWrapper from './wrapper/AdminWrapper';
 
+// import Login from './components/Login';
+import LandingPage from "./components/LandingPage";
+import Tabs from "./components/Tabs";
+import Admin from "./admin/admin";
 
 function App() {
   useEffect(() => {
@@ -44,7 +48,6 @@ function App() {
             
             
         </Routes>
-      
       </Router>
     </div>
   );
