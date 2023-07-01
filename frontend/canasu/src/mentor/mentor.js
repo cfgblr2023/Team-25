@@ -3,7 +3,7 @@ import React from 'react'
 export default function mentor() {
   return (
     <div>
-      mentor
+      mentor1
     </div>
   )
 }

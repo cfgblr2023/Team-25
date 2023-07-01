@@ -1,0 +1,9 @@
+#landingPageContainerTop{
+    width: 100%;
+    height:60vh; 
+    position:relative;
+    /* background:wheat; */
+    background: url('/public/assets/ngoImgBg.png');
+    overflow: hidden;
+    background-size:cover;
+}
