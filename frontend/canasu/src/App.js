@@ -21,6 +21,9 @@ import MentorDashboard from "./mentor/MentorDashboard";
 import Batches from "./components/Batches";
 import MenteeDashboard from "./mentee/MenteeDashboard";
 import SignUp from "./mentor/SignUp"
+import ModulePage from "./mentor/ModulePage"
+import Modules_new from "./components/Modules_new";
+import FooterComp from "./components/FooterComp";
 import Add from "./admin/Add";
 
 
@@ -39,7 +42,7 @@ function App() {
             {/* <Route path="/admin" element={<ProtectedRoute><AdminWrapper /></ProtectedRoute>}> */}
               <Route index element={<Navigate to="/admin/batches"/>}/>
                 <Route path="batches" element={<Batches/>}/>
-                <Route path="batch/:id" element={<h1>batch</h1>}/>
+                <Route path="batch/:id" element={<Modules_new/>}/>
                 <Route path="add" element={<Add/>}/>
             </Route>
             
@@ -47,12 +50,17 @@ function App() {
             <Route path="/mentor" element={<MentorWrapper />}>
               <Route index element={<Navigate to="/mentor/dashboard"/>}/>
                 <Route path="dashboard" element={<MentorDashboard/>}/>
+                <Route  element={<Navigate to="/mentor/batch/id"/>}/>
+                <Route path="batch/id" element={<Modules_new/>}/>
             </Route>
 
             {/* <Route path="/student" element={<ProtectedRoute><MenteeWrapper /></ProtectedRoute>}> */}
             <Route path="/student" element={<MenteeWrapper />}>
               <Route index element={<Navigate to="/student/dashboard"/>}/>
                 <Route path="dashboard" element={<MenteeDashboard/>}/>
+                <Route  element={<Navigate to="/student/batch/id"/>}/>
+                <Route path="batch/id" element={<Modules_new/>}/>
+                
             </Route>
 
             {/* <Route path="/batches" element={<Batches />}/> */}
@@ -60,6 +68,7 @@ function App() {
 
         </Routes>
       </Router>
+      <FooterComp/>
     </div>
   );
 }

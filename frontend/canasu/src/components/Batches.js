@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NavComp from "./NavComp";
-import "../styles/batches.css"
+import "../styles/batches.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { useNavigate } from "react-router-dom";
@@ -9,30 +9,29 @@ import { toast } from "react-hot-toast";
 
 export default function Batches() {
   const mentor_mapping = [
-    
     {
-      id:0,
-      mentor:"abc",
-      mentee:"lmn",
-      language:"hindi"
+      id: 0,
+      mentor: "abc",
+      mentee: "lmn",
+      language: "hindi",
     },
     {
-      id:1,
-      mentor:"abc",
-      mentee:"lmn",
-      language:"hindi"
+      id: 1,
+      mentor: "abc",
+      mentee: "lmn",
+      language: "hindi",
     },
     {
-      id:2,
-      mentor:"abc",
-      mentee:"lmn",
-      language:"hindi"
+      id: 2,
+      mentor: "abc",
+      mentee: "lmn",
+      language: "hindi",
     },
     {
-      id:3,
-      mentor:"abc",
-      mentee:"lmn",
-      language:"hindi"
+      id: 3,
+      mentor: "abc",
+      mentee: "lmn",
+      language: "hindi",
     },
     {
       id:4,
@@ -65,8 +64,8 @@ const navigate = useNavigate();
     navigate("/batche/module")
   };
 
-  
   return (
+    <>
     <div className="Batches">
       
       <div className="table-responsive small d-flex justify-content-center ">
@@ -96,6 +95,7 @@ const navigate = useNavigate();
           </tbody>
         </table>
       </div>
-    </div>
+        </div>
+    </>
   );
 }
