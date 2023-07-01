@@ -10,5 +10,3 @@ const moduleSchema = new mongoose.Schema({
 const Module = mongoose.model('Module', moduleSchema);
 
 module.exports = Module;
-const ModuleModel = mongoose.model("Module", ModuleSchema);
-module.exports = ModuleModel;
