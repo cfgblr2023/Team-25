@@ -2,28 +2,28 @@ import React, { useState } from 'react';
 
 const CSVUploader = () => {
   const [csvData, setCSVData] = useState([]);
-  
+
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
-    
+
     reader.onload = (e) => {
       const contents = e.target.result;
-      const rows = contents.split('\n');
-      
+      const rows = contents.split("\n");
+
       // Parsing CSV data
       const data = [];
       for (let i = 0; i < rows.length; i++) {
-        const row = rows[i].split(',');
+        const row = rows[i].split(",");
         data.push(row);
       }
-      
+
       setCSVData(data);
     };
-    
+
     reader.readAsText(file);
   };
-  
+
   return (
     <div>
       <input type="file" accept=".csv" onChange={handleFileUpload} />

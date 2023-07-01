@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import { Link } from "react-router-dom";
 
-export default function NavComp() {
+export default function NavCompAdmin() {
   return (
     <div>
       <Navbar expand="lg" className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -19,20 +19,21 @@ export default function NavComp() {
                 Login
               </Nav.Link> */}
               
-              <Nav.Link as={Link} to={"/batches"}>
-                Batches
+              <Nav.Link as={Link} to={"/addmentee"}>
+                Add Mentee
               </Nav.Link>
               {/* <Nav.Link as={Link} to={"/contact"}>Contact</Nav.Link> */}
-              <Nav.Link as={Link} to={"/upcomming"}>
-                Upcomming Sessions
+              <Nav.Link as={Link} to={"/viewadmin"}>
+                View admin
               </Nav.Link>
               
               
             </Nav>
             <Nav className="ml-auto">
                 
+                {/* <Nav.Link onClick={()=>updateParentState({})}>Logout</Nav.Link> */}
 
-                <Nav.Link as={Link} to={"/logout"}>Logout</Nav.Link>
+                <Nav.Link as={Link} to={"/logout"}> Logout</Nav.Link>
                 
             </Nav>
           </Navbar.Collapse>
