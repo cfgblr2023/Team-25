@@ -14,11 +14,13 @@ app.use(cors());
 //routes
 
 const authRoute = require('./routes/auth');
+const adminRoute = require('./routes/admin');
 
 
 
 app.get("/",(req,res)=> res.json({message: "setup success !!"}));
 app.use("/auth",authRoute);
+app.use("/admin",adminRoute);
 
 const PORT= process.env.PORT || 4000
 app.listen(PORT,()=>
