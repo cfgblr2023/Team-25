@@ -21,7 +21,6 @@ import MentorDashboard from "./mentor/MentorDashboard";
 import Batches from "./components/Batches";
 import MenteeDashboard from "./mentee/MenteeDashboard";
 import SignUp from "./mentor/SignUp"
-import Batches from "./components/Batches";
 import ModulePage from "./mentor/ModulePage"
 import Modules_new from "./components/Modules_new";
 import FooterComp from "./components/FooterComp";
