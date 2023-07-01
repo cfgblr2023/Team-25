@@ -3,6 +3,15 @@ import "../styles/landingPage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function LandingPage() {
+
+
+  const navigate = useNavigate();
+
+  const handleLoginSubmit = () => {
+    navigate("/login")
+  };
+
+
   return (
     <>
       <img
@@ -13,7 +22,7 @@ export default function LandingPage() {
         className="container-fluid d-flex ms-0 flex-column justify-content-center align-items-center overflow-auto"
         id="landingPageContainer1"
       >
-        <p className="h3 text-dark">
+        <p className="h3 text-light">
           <i>
             Our vision is to create a world in which all women determine the
             course of their lives & reach their full potential.
@@ -61,11 +70,7 @@ export default function LandingPage() {
               Some representative placeholder content for the three columns of
               text below the carousel. This is the first column.
             </p>
-            <p>
-              <a className="btn btn-warning mb-5" href="#">
-                View details »
-              </a>
-            </p>
+           
           </div>
 
           <div className="col-3">
@@ -91,11 +96,7 @@ export default function LandingPage() {
               Some representative placeholder content for the three columns of
               text below the carousel. This is the first column.
             </p>
-            <p>
-              <a className="btn btn-warning" href="#">
-                View details »
-              </a>
-            </p>
+         
           </div>
 
           <div className="col-3">
@@ -121,11 +122,7 @@ export default function LandingPage() {
               Some representative placeholder content for the three columns of
               text below the carousel. This is the first column.
             </p>
-            <p>
-              <a className="btn btn-warning" href="#">
-                View details »
-              </a>
-            </p>
+         
           </div>
 
           <div className="col-3">
@@ -151,11 +148,7 @@ export default function LandingPage() {
               Some representative placeholder content for the three columns of
               text below the carousel. This is the first column.
             </p>
-            <p>
-              <a className="btn btn-warning" href="#">
-                View details »
-              </a>
-            </p>
+          
           </div> 
         </div>  
       </div>

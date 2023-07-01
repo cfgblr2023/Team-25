@@ -1,35 +1,47 @@
 // import logo from './logo.svg';
 import "./App.css";
 
-import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./components/Login";
-import SignUp from "./mentor/SignUp";
-import MentorDashboard from "./mentor/MentorDashboard";
-
-// import Login from './components/Login';
+import React, { useEffect, useState } from 'react'
+import{
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate
+} from "react-router-dom";
+import AdminWrapper from './wrapper/AdminWrapper';
 import LandingPage from "./components/LandingPage";
 import Tabs from "./components/Tabs";
 import Admin from "./admin/admin";
 
 function App() {
-  const [user, setLoginUser] = useState();
+  useEffect(() => {
+    const func = ()=>{
+      if(localStorage.getItem('token')){
 
-  const handleUpdate = (newValue) => {
-    setLoginUser(newValue);
-  };
+      }
+    }
+    func();
+  }, [])
+  
 
   return (
     <div className="App">
       <Router>
-        HOME
-        <Routes>
-          <Route
-            path="/login"
-            element={<Login updateParentState={handleUpdate} />}
-          />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/mentor-dashboard" element={<MentorDashboard />} />
+        {/* <LandingPage/> */}
+      
+      <Routes>
+            
+            <Route path="/" element={<LandingPage  />}/>
+            <Route path="/login" element={<Tabs  />}/>
+            <Route path="/admin" element={<AdminWrapper />}>
+              <Route index element={<Navigate to="/admin/batches"/>}/>
+                <Route path="batches" element={<h1>blah</h1>}/>
+              </Route>
+            {/* <Route path="/batches" element={<Batches />}/> */}
+             
+
+            
+            
         </Routes>
       </Router>
     </div>
