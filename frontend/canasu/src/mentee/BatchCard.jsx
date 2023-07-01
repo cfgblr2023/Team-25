@@ -13,7 +13,7 @@ function BatchCard() {
         <Card.Text>
           <h6>Mentor Name</h6>
           <h6>Course Name</h6>
-          <button className='student_joinbtn'> <h4 className='joinbtn'>Join</h4></button>
+          {/* <button className='student_joinbtn'> <h4 className='joinbtn'>Join</h4></button> */}
 
         </Card.Text>
         <Button variant="primary">Check modules</Button>
