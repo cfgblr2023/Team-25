@@ -17,6 +17,9 @@ import Admin from "./admin/admin";
 import { serviceGet } from "./utils/api";
 import ProtectedRoute from "./wrapper/ProtectedRoute";
 import MentorDashboard from "./mentor/MentorDashboard";
+import MenteeDashboard from "./mentee/MenteeDashboard";
+import SignUp from "./mentor/SignUp"
+
 
 function App() {
   return (
