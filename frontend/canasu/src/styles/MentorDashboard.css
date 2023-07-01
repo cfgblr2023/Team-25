@@ -1,0 +1,49 @@
+.mentordashboard{
+width: 100vw;
+height: 100vh;
+background-color: rgb(213, 247, 233);
+display: flex;
+}
+
+.sidebar{
+  width: 15%;
+  border-radius: 20px;
+  background-color: rgb(167, 244, 227);
+}
+
+.mainContainer{
+  width: 100%;
+  border-radius: 20px;
+  
+}
+.mentorHeading{
+  margin: 10px;
+  border-radius: 12px;
+  background-color: rgb(181, 237, 239);
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+}
+
+.headingDiv{
+  margin: 10px;
+  border-radius: 12px;
+  background-color: rgb(125, 213, 216);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.batchHeading{
+  font-weight: 700;
+}
+
+.batchBody{
+  padding: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+  grid-gap: 50px;
+}

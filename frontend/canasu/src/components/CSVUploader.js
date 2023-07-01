@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import "../styles/csv_uploader.css"
 
 const CSVUploader = () => {
   const [csvData, setCSVData] = useState([]);
@@ -26,39 +25,20 @@ const CSVUploader = () => {
   };
   
   return (
-    <div >
+    <div>
+      <input type="file" accept=".csv" onChange={handleFileUpload} />
       
-      <div className=' d-flex justify-content-center'>
       {csvData.length > 0 && (
-        // <table>
-        //   <thead>
-        //     <tr>
-        //       {csvData[0].map((header, index) => (
-        //         <th key={index}>{header}</th>
-        //       ))}
-        //     </tr>
-        //   </thead>
-        //   <tbody>
-        //     {csvData.slice(1).map((row, index) => (
-        //       <tr key={index}>
-        //         {row.map((cell, cellIndex) => (
-        //           <td key={cellIndex}>{cell}</td>
-        //         ))}
-        //       </tr>
-        //     ))}
-        //   </tbody>
-        // </table>
-        <div className=' w-75 p-3' >
-            <table class="table table-striped table-sm border border-dark ">
+        <table>
           <thead>
             <tr>
-            {csvData[0].map((header, index) => (
+              {csvData[0].map((header, index) => (
                 <th key={index}>{header}</th>
               ))}
             </tr>
           </thead>
           <tbody>
-          {csvData.slice(1).map((row, index) => (
+            {csvData.slice(1).map((row, index) => (
               <tr key={index}>
                 {row.map((cell, cellIndex) => (
                   <td key={cellIndex}>{cell}</td>
@@ -67,26 +47,7 @@ const CSVUploader = () => {
             ))}
           </tbody>
         </table>
-        </div>
-        
       )}
-      </div>
-      <input  type="file" accept=".csv" onChange={handleFileUpload} />
-      {/* <button type="file" accept=".csv" class="btn btn-primary" onClick={handleFileUpload}>Choose File</button> */}
-
-        <div className='d-flex justify-content-center m-3'>
-        <div className='row w-75 ' >
-        <div className='col-6 bg-success '>
-            hello
-        </div>
-        <div className='col-6 bg-primary'>
-                    test
-        </div>
-        </div> 
-        </div>            
-                  
-    
-    
     </div>
   );
 };
