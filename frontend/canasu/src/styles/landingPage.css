@@ -1,9 +1,21 @@
-#landingPageContainerTop{
+#landingPageContainer1{
     width: 100%;
     height:60vh; 
-    position:relative;
-    /* background:wheat; */
-    background: url('/public/assets/ngoImgBg.png');
+    background: url('https://images.unsplash.com/photo-1602856580608-15599264e9f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
+   
     overflow: hidden;
     background-size:cover;
+}
+
+#landingPageContainer2{
+    width: 100%;
+    height:fit-content;
+    position:relative;
+    background:rgb(222, 205, 175);
+    /* overflow: scroll; */
+    /* background-size:cover; */
+}
+
+#landingPageContainer3{
+    background:rgb(222, 205, 175);
 }
