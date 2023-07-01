@@ -3,7 +3,7 @@ import Login from "./Login";
 import "../styles/Tabs.css";
 
 function Tabs(props) {
-  const [toggleState, setToggleState] = useState(1);
+  const [toggleState, setToggleState] = useState(3);
 
   const toggleTab = (index) => {
     setToggleState(index);
