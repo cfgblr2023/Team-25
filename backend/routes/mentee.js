@@ -1,5 +1,7 @@
 const express = require("express");
 const ResourcesModel = require("../database/schema/resources");
+const verifyMentor = require("../middleware/verifyMentee");
+const BatchModel = require("../database/schema/Batch");
 const Router = express.Router();
 
 
@@ -81,13 +83,13 @@ Router.post('/feedback',async(req, res)=>{
             }
         });
         
-        Router.get('/batch/:menteeId', async (req, res) => {
+        Router.get('/batch', verifyMentor, async (req, res) => {
             try {
-                const { menteeId } = req.params
-                const newBatch = await BatchModel.find({ mentee: menteeId }).populate("modules");
+                const menteeId = req.user._id;
+                const newBatch = await BatchModel.find({ mentee: menteeId }).populate("modules mentor mentee");
         
         
-                return res.status(200).json({  mentee: newBatch, success: true, message: "Batch fetched Successfully" });
+                return res.status(200).json({  batches: newBatch, success: true, message: "Batch fetched Successfully" });
             } catch (error) {
                 return res.status(500).json({ message: error.message, success: false });
         
