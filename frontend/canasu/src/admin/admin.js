@@ -1,6 +1,7 @@
 import React from 'react'
 import NavComp from '../components/NavComp'
 import CSVUploader from '../components/CSVUploader'
+import InfoTables from '../components/InfoTables'
 
 
 export default function Admin() {
@@ -8,6 +9,8 @@ export default function Admin() {
     <div >
       <NavComp/>
       <CSVUploader/>
+      
+      <InfoTables/>
       
       
     </div>
