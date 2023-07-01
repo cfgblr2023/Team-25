@@ -16,6 +16,10 @@ const MentorSchema = new mongoose.Schema({
     password:
     {
         type: String
+    },
+    status:{
+        type:String,
+        default: 'Available'
     }
     },
     {
