@@ -1,5 +1,5 @@
 const {verify} =  require("jsonwebtoken");
-const UserModel = require("../database/schema/User");
+const MentorModel = require("../database/schema/Mentor");
 
 const getUserStatus = async (req, res, next) => {
 
@@ -11,7 +11,7 @@ const getUserStatus = async (req, res, next) => {
             res.status(401).send({ message: "please authenticate using a valid token token not found" })
         }
         const data = verify(token, process.env.JWT_TOKEN);
-        const result = await UserModel.findById(data.user).select("-password");
+        const result = await MentorModel.findById(data.user).select("-password");
 
         if (!result) {
             throw new Error("User not found");
