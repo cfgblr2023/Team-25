@@ -1,10 +1,12 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import img from "./mentoring.png"
+
 
 function BatchCard() {
   return (
     <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
+      <Card.Img variant="top" src={img} />
       <Card.Body>
         <Card.Title><h2>Batch 1</h2><br/></Card.Title>
         <Card.Text>
