@@ -18,6 +18,9 @@ Router.post('/add/mentee', async (req, res) => {
             const { email, name, language } = students[i];
             var student = await MenteeModel.findOne({ email });
             const mentor = await MentorModel.findOne({ language, status: 'available' });
+            if(!mentor){
+                return res.status(200).json({success:false, message:'No mentor available for now'})
+            }
             if (!student) {
                 student = await MenteeModel.create({
                     name,

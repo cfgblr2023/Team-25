@@ -18,7 +18,7 @@ const BatchSchema = new mongoose.Schema({
     
     modules: [{
         type: mongoose.Types.ObjectId,
-        ref: "modules"
+        ref: "Module"
     }]
     },
     {
