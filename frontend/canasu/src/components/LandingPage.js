@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/landingPage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router";
-import { Link } from "react-router-dom";
+import Smile from '@mui/icons-material/SentimentSatisfiedAlt';
 
 export default function LandingPage() {
 
@@ -30,6 +30,13 @@ export default function LandingPage() {
             course of their lives & reach their full potential.
           </i>
           <div className="row d-flex justify-content-center mt-5">
+            <div className="col-4 d-flex justify-content-center ">
+              <button type="button" className="btn btn-warning bg-warning" onClick={handleLoginSubmit}>
+                Login
+              </button>
+              <button type="button" className="ms-2 btn btn-warning btn-sm bg-warning">
+                SignUp
+                </button>
             <div className="col-6 ">
               <Link to={"/login"} type="button" className="btn btn-warning btn-lg">
                 Login
@@ -39,18 +46,24 @@ export default function LandingPage() {
               </Link>
             </div>
           </div>
+          </div>
         </p>
       </div>
+      <div className="container-fluid d-flex justify-content-center align-items-center mt-3 mb-3">
+      <img src="/assets/icon1.svg" alt="" height="250px" />
       <p className="h2 mt-4 text-secondary mb-4 ">
         <i>Nurturing Dreams, Empowering Communities</i>
       </p>
+      </div>
+     
+     
       <div className="container-fluid pt-3 mb-5" id="landingPageContainer2">
         <p className="h1 text-black text-center">Our Interventions</p>
         <p className="h3 text-secondary text-center fst-italic mb-4">
           What we do?
         </p>
 
-        <div className="row mb-3">
+        <div className="row mb-2">
           <div className="col-3 d-flex flex-column">
             <img
               src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1673&q=80"
@@ -94,9 +107,7 @@ export default function LandingPage() {
               voluptatibus expedita, dicta natus repellendus temporibus.
             </p>
             <p>
-              <a className="btn btn-warning mb-5" href="#">
-                View details »
-              </a>
+             
             </p>
            
           </div>
@@ -110,23 +121,19 @@ export default function LandingPage() {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla voluptatibus expedita, dicta natus repellendus temporibus.
            </p>
            <p>
-             <a className="btn btn-warning mb-5" href="#">
-               View details »
-             </a>
+            
            </p>
          </div>
         </div>
       </div>
-      <div className="container-fluid" id="landingPageContainer3">
-        <p className="h1 text-secondary text-center fst-italic py-4">
-          How we do it?
-        </p>
-        <img
-          src="https://static.wixstatic.com/media/1dd121_a991a648dede45e4943316465cf1c68e~mv2.jpg/v1/fill/w_1920,h_1080,al_c,q_90,enc_auto/Design%20for%20GIVE%20(2).jpg"
-          alt="The Inner Voice Framework for change"
-          className="img-fluid"
-        ></img>
+      <div className="container-fluid d-flex justify-content-center align-items-center mt-3 mb-3">
+      <p className="h2 mt-2 text-secondary mb-3">
+        <i>“Everything is within your power, and your power is within you.”</i>
+      </p>
+      <img src="/assets/imgIcon.svg" alt="" height="250px" />
       </div>
+     
+     
 
       <footer class="text-muted py-2 bg-secondary">
         <div className="container-fluid">

@@ -5,7 +5,6 @@ import BatchCard from "./BatchCard";
 import { toast } from "react-hot-toast";
 import { serviceGet } from "../utils/api";
 
-
 const MentorDashboard = () => {
   const [batches, setbatches] = useState([]);
   const token = localStorage.getItem("token");
@@ -25,7 +24,6 @@ const MentorDashboard = () => {
   
   return (
     <>
-    
       <div className="mentordashboard">
         {/* <div className="sidebar">
           <div className="logoMentor">
