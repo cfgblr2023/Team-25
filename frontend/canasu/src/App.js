@@ -8,22 +8,16 @@ import{
   Route,
   Navigate
 } from "react-router-dom";
-// import Login from './components/Login';
-import LandingPage from './components/LandingPage';
-import Tabs from './components/Tabs';
-import Admin from './admin/admin';
-import Batches from './components/Batches';
-
+import AdminWrapper from './wrapper/AdminWrapper';
+import LandingPage from "./components/LandingPage";
+import Tabs from "./components/Tabs";
+import Admin from "./admin/admin";
+import { serviceGet } from "./utils/api";
+import ProtectedRoute from "./wrapper/ProtectedRoute";
 
 function App() {
-
-
-  const [user,setLoginUser] = useState()
-
-  const handleUpdate = (newValue) => {
-    setLoginUser(newValue);
-  };
-
+ 
+  
 
   return (
     <div className="App">
@@ -32,9 +26,12 @@ function App() {
       <Routes>
             
             <Route path="/" element={<LandingPage  />}/>
-            <Route path="/tabs" element={<Tabs updateParentState={handleUpdate} />}/>
-            <Route path="/admin" element={<Admin />}/>
-            <Route path="/batches" element={<Batches />}/>
+            <Route path="/login" element={<Tabs  />}/>
+            <Route path="/admin" element={<ProtectedRoute><AdminWrapper /></ProtectedRoute>}>
+              <Route index element={<Navigate to="/admin/batches"/>}/>
+                <Route path="batches" element={<h1>blah</h1>}/>
+              </Route>
+            {/* <Route path="/batches" element={<Batches />}/> */}
              
 
             

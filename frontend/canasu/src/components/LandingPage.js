@@ -92,6 +92,11 @@ export default function LandingPage() {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla
               voluptatibus expedita, dicta natus repellendus temporibus.
             </p>
+            <p>
+              <a className="btn btn-warning mb-5" href="#">
+                View details »
+              </a>
+            </p>
            
           </div>
 
