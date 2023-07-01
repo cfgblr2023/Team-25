@@ -41,7 +41,7 @@ export default function Batches() {
   const navigate = useNavigate();
 
   const handleRowClick = () => {
-    navigate("/admin/id");
+    navigate("/admin/batch/id");
   };
 
   return (

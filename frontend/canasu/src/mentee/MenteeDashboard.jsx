@@ -7,7 +7,7 @@ import NavComp from "../components/NavComp";
 const MenteeDashboard = () => {
   return (
     <>
-      <NavComp />
+      
       <div className="mentordashboard">
         <div className="mainContainer">
           <h1 className="mentorHeading"> Mentee/Student Page </h1>

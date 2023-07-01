@@ -5,7 +5,7 @@ export default function MentorWrapper() {
     return (
     
         <>
-            <NavComp/>
+            <NavComp branch={"mentor"}/>
             <Outlet/>
         </>
       )

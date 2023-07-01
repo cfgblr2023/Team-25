@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 function BatchCard() {
   const navigate= useNavigate();
   const handleMentorClick = () => {
-    navigate("/mentor/id");
+    navigate("/mentor/batch/id");
   };
   return (
     <Card style={{ width: '18rem' }}>

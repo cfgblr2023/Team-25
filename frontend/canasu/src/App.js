@@ -22,6 +22,7 @@ import SignUp from "./mentor/SignUp"
 import Batches from "./components/Batches";
 import ModulePage from "./mentor/ModulePage"
 import Modules_new from "./components/Modules_new";
+import FooterComp from "./components/FooterComp";
 
 
 function App() {
@@ -35,26 +36,26 @@ function App() {
             <Route path="/login" element={<Tabs  />}/>
             {/* <Route path="/admin" element={<ProtectedRoute><AdminWrapper /></ProtectedRoute>}> */}
             <Route path="/admin" element={<AdminWrapper />}>
-              <Route index element={<Navigate to="/admin/batches"/>}/>
-                <Route path="batches" element={<Batches/>}/>
-                <Route  element={<Navigate to="/admin/id"/>}/>
-                <Route path="id" element={<Modules_new/>}/>
+              <Route index element={<Navigate to="/admin/batch"/>}/>
+                <Route path="batch" element={<Batches/>}/>
+                <Route  element={<Navigate to="/admin/batch/id"/>}/>
+                <Route path="batch/id" element={<Modules_new/>}/>
             </Route>
             
             {/* <Route path="/mentor" element={<ProtectedRoute><MentorWrapper /></ProtectedRoute>}> */}
             <Route path="/mentor" element={<MentorWrapper />}>
               <Route index element={<Navigate to="/mentor/dashboard"/>}/>
                 <Route path="dashboard" element={<MentorDashboard/>}/>
-                <Route  element={<Navigate to="/mentor/id"/>}/>
-                <Route path="id" element={<ModulePage/>}/>
+                <Route  element={<Navigate to="/mentor/batch/id"/>}/>
+                <Route path="batch/id" element={<Modules_new/>}/>
             </Route>
 
             {/* <Route path="/student" element={<ProtectedRoute><MenteeWrapper /></ProtectedRoute>}> */}
             <Route path="/student" element={<MenteeWrapper />}>
               <Route index element={<Navigate to="/student/dashboard"/>}/>
                 <Route path="dashboard" element={<MenteeDashboard/>}/>
-                <Route  element={<Navigate to="/student/id"/>}/>
-                <Route path="id" element={<ModulePage/>}/>
+                <Route  element={<Navigate to="/student/batch/id"/>}/>
+                <Route path="batch/id" element={<Modules_new/>}/>
                 
             </Route>
 
@@ -63,6 +64,7 @@ function App() {
 
         </Routes>
       </Router>
+      <FooterComp/>
     </div>
   );
 }

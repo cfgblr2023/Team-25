@@ -127,7 +127,7 @@ export default function LandingPage() {
         ></img>
       </div>
 
-      <footer class="text-muted py-2 bg-secondary">
+      {/* <footer class="text-muted py-2 bg-secondary">
         <div className="container-fluid">
           <p className="float-end mb-1">
             <a href="#" className="text-light">
@@ -136,7 +136,7 @@ export default function LandingPage() {
           </p>
           <p className="mb-1 text-light">©2023 by Canasu Dream Foundation</p>
         </div>
-      </footer>
+      </footer> */}
     </>
   );
 }
