@@ -15,6 +15,9 @@ import Admin from "./admin/admin";
 import { serviceGet } from "./utils/api";
 import ProtectedRoute from "./wrapper/ProtectedRoute";
 import MentorDashboard from "./mentor/MentorDashboard";
+import MenteeDashboard from "./mentee/MenteeDashboard";
+import SignUp from "./mentor/SignUp"
+
 
 function App() {
   return (
@@ -23,7 +26,9 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Tabs />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/mentor-dashboard" element={<MentorDashboard />} />
+          <Route path="/student" element={<MenteeDashboard />} />
 
           <Route
             path="/admin"
