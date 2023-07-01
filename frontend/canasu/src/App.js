@@ -8,6 +8,7 @@ import{
   Route
 } from "react-router-dom";
 import Login from './components/Login';
+import SignUp from './mentor/SignUp';
 function App() {
 
   const [user,setLoginUser] = useState()
@@ -25,6 +26,7 @@ function App() {
       <Routes>
             
             <Route path="/login" element={<Login  updateParentState={handleUpdate}/>}/>
+            <Route path="/signup" element={<SignUp/>}/>
             
             
             
