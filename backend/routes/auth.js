@@ -4,9 +4,11 @@ const bcryptjs = require('bcryptjs');
 
 const Router = express.Router();
 
-const UserModel = require('../database/schema/Mentee');
-const getUserStatus = require("../middleware/verifyMentee");
+const MenteeModel = require('../database/schema/Mentee');
+const verifyMentee = require("../middleware/verifyMentee");
 const ses = require("../services/aws");
+const MentorModel = require("../database/schema/Mentor");
+const verifyMentor = require("../middleware/verifyMentee");
 
 
 
@@ -19,7 +21,7 @@ method    post
 
 */
 
-Router.get("/student/verify", getUserStatus, async (req, res) => {
+Router.get("/student/verify", verifyMentee, async (req, res) => {
     try {
       if (req.user) {
         return res.status(200).json({ success: true, user: req.user });
@@ -44,11 +46,11 @@ method    post
 Router.post("/student/signup", async (req, res) => {
     try {
       const { email } = req.body;
-      const user = await UserModel.findOne({ email })
+      const user = await MenteeModel.findOne({ email })
       if (!user) {
         
         //DB
-        const newUser = await UserModel.create({...req.body});
+        const newUser = await MenteeModel.create({...req.body});
   
         //JWT AUth Token
         const token = newUser.generateJwtToken();
@@ -77,7 +79,7 @@ Router.post("/student/signup", async (req, res) => {
     try {
       const { password, email } = req.body;
   
-      let user = await UserModel.findByEmailAndPassword({ email, password });
+      let user = await MenteeModel.findByEmailAndPassword({ email, password });
       user.password = null;
       //JWT AUth Token
       const token = user.generateJwtToken();
@@ -103,7 +105,7 @@ Router.post("/student/forgot-pass", async (req, res) => {
     try {
       const { email } = req.query;
    
-      const user = await UserModel.findOne({ email });
+      const user = await MenteeModel.findOne({ email });
       if (!user) {
         return res.status(404).json({ message: "User not Found", success: false });
       }
@@ -141,12 +143,12 @@ Router.post("/student/forgot-pass", async (req, res) => {
   
   })
   
-  Router.put('student/reset-pass',async (req,res)=>{
+  Router.put('/student/reset-pass',async (req,res)=>{
     try {
       const {token, password} = req.body;
       const {id, email} = jwt.verify(token,'forget-pass');
       
-      const user = await UserModel.findById(id);
+      const user = await MenteeModel.findById(id);
       if(user.email!== email){
         return res.status(401).json({message:"Not Authorized", success:false});
       }
@@ -154,7 +156,7 @@ Router.post("/student/forgot-pass", async (req, res) => {
     const salt= await bcryptjs.genSalt(10);
   
     const secPass= await bcryptjs.hash(password,salt);
-      const updatedUser =  await UserModel.findByIdAndUpdate(id,{
+      const updatedUser =  await MenteeModel.findByIdAndUpdate(id,{
         password: secPass
       },{
         new:true,
@@ -178,7 +180,7 @@ method    post
 
 */
 
-Router.get("/mentor/verify", getUserStatus, async (req, res) => {
+Router.get("/mentor/verify", verifyMentor, async (req, res) => {
   try {
     if (req.user) {
       return res.status(200).json({ success: true, user: req.user });
@@ -203,11 +205,11 @@ method    post
 Router.post("/mentor/signup", async (req, res) => {
   try {
     const { email } = req.body;
-    const user = await UserModel.findOne({ email })
+    const user = await MentorModel.findOne({ email })
     if (!user) {
       
       //DB
-      const newUser = await UserModel.create({...req.body});
+      const newUser = await MentorModel.create({...req.body});
 
       //JWT AUth Token
       const token = newUser.generateJwtToken();
@@ -236,7 +238,7 @@ Router.post("/mentor/signin", async (req, res) => {
   try {
     const { password, email } = req.body;
 
-    let user = await UserModel.findByEmailAndPassword({ email, password });
+    let user = await MentorModel.findByEmailAndPassword({ email, password });
     user.password = null;
     //JWT AUth Token
     const token = user.generateJwtToken();
@@ -262,7 +264,7 @@ Router.post("/mentor/forgot-pass", async (req, res) => {
   try {
     const { email } = req.query;
  
-    const user = await UserModel.findOne({ email });
+    const user = await MentorModel.findOne({ email });
     if (!user) {
       return res.status(404).json({ message: "User not Found", success: false });
     }
@@ -305,7 +307,7 @@ Router.put('/mentor/reset-pass',async (req,res)=>{
     const {token, password} = req.body;
     const {id, email} = jwt.verify(token,'forget-pass');
     
-    const user = await UserModel.findById(id);
+    const user = await MentorModel.findById(id);
     if(user.email!== email){
       return res.status(401).json({message:"Not Authorized", success:false});
     }
@@ -313,7 +315,7 @@ Router.put('/mentor/reset-pass',async (req,res)=>{
   const salt= await bcryptjs.genSalt(10);
 
   const secPass= await bcryptjs.hash(password,salt);
-    const updatedUser =  await UserModel.findByIdAndUpdate(id,{
+    const updatedUser =  await MentorModel.findByIdAndUpdate(id,{
       password: secPass
     },{
       new:true,

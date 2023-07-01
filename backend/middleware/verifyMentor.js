@@ -1,7 +1,7 @@
 const {verify} =  require("jsonwebtoken");
-const MenteeModel = require("../database/schema/Mentee");
+const MentorModel = require("../database/schema/Mentor");
 
-const verifyMentor = async (req, res, next) => {
+const getUserStatus = async (req, res, next) => {
 
     //get the user from the jwt token and add id to req object
     try {
@@ -11,7 +11,7 @@ const verifyMentor = async (req, res, next) => {
             res.status(401).send({ message: "please authenticate using a valid token token not found" })
         }
         const data = verify(token, process.env.JWT_TOKEN);
-        const result = await MenteeModel.findById(data.user).select("-password");
+        const result = await MentorModel.findById(data.user).select("-password");
 
         if (!result) {
             throw new Error("User not found");
@@ -25,4 +25,4 @@ const verifyMentor = async (req, res, next) => {
     }
 }
 
-module.exports = verifyMentor;
+module.exports = getUserStatus;

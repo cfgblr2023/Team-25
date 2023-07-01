@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const MenteeSchema = new mongoose.Schema({
+const MentorSchema = new mongoose.Schema({
     name:
     {
         type: String,
@@ -22,15 +22,15 @@ const MenteeSchema = new mongoose.Schema({
         timestamps: true
     });
 
-MenteeSchema.methods.generateJwtToken = function () {
+MentorSchema.methods.generateJwtToken = function () {
     return jwt.sign({ user: this._id.toString() }, process.env.JWT_TOKEN, {expiresIn: "8h"});
 };
 
 //custom login
-MenteeSchema.statics.findByEmailAndPassword =
+MentorSchema.statics.findByEmailAndPassword =
     async ({ email, password}) => {
         //check whether user exists
-        const user = await MenteeModel.findOne({ email });
+        const user = await MentorSchema.findOne({ email });
         
         if (!user) {
             throw new Error("User does not exist");
@@ -46,7 +46,7 @@ MenteeSchema.statics.findByEmailAndPassword =
 
 //hashing and salting
 
-MenteeSchema.pre("save", function (next) {
+MentorSchema.pre("save", function (next) {
     const user = this;
     //password is not modified  
     if (!user.isModified("password")) return next();
@@ -65,5 +65,5 @@ MenteeSchema.pre("save", function (next) {
 
 });
 
-const MenteeModel = mongoose.model("Mentee", MenteeSchema);
-module.exports = MenteeModel;
+const MentorModel = mongoose.model("Mentor", MentorSchema);
+module.exports = MentorModel;
