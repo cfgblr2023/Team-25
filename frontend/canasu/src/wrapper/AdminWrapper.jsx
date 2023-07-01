@@ -1,11 +1,11 @@
 import React from 'react'
 import { Navigate, Outlet } from "react-router-dom";
-import NavComp from '../components/NavComp';
+import NavCompAdmin from '../components/NavCompAdmin';
 const AdminWrapper = () => {
   return (
     
     <>
-        <NavComp/>
+        <NavCompAdmin/>
         <Outlet/>
     </>
   )

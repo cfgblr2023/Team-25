@@ -8,7 +8,7 @@ import NavComp from "../components/NavComp";
 const MentorDashboard = () => {
   return (
     <>
-    <NavComp/>
+    
       <div className="mentordashboard">
         {/* <div className="sidebar">
           <div className="logoMentor">
