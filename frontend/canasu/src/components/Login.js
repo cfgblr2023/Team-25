@@ -4,7 +4,7 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function Login({ updateParentState }) {
+export default function Login({type, updateParentState }) {
 
   const navigate = useNavigate();
 
@@ -13,6 +13,7 @@ export default function Login({ updateParentState }) {
     email: "",
     password: "",
     reEnterPassword: "",
+    type: 1
   });
 
   const handleChange = (e) => {
@@ -25,17 +26,18 @@ export default function Login({ updateParentState }) {
   };
 
   const login = () => {
-    axios.post("http://localhost:5000/login", user)
-    .then(res => {
-        alert(res.data.message)
-        if(res.data.user)
-        {
-          updateParentState(res.data.user);
-          navigate("/login")
-          // console.log(res.data.user)
-        }  
+    console.log(user)
+    // axios.post("http://localhost:5000/login", user)
+    // .then(res => {
+    //     alert(res.data.message)
+    //     if(res.data.user)
+    //     {
+    //       updateParentState(res.data.user);
+    //       navigate("/login")
+    //       // console.log(res.data.user)
+    //     }  
         
-    })
+    // })
 }
   return (
     <div className="loginWrapper">

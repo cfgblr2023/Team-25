@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const MenteeSchema = new mongoose.Schema({
+const AdminSchema = new mongoose.Schema({
     name:
     {
         type: String,
@@ -16,26 +16,21 @@ const MenteeSchema = new mongoose.Schema({
     password:
     {
         type: String
-    },
-    language:{
-        type: String,
-        lowercase: true,
-        trim: true,
     }
     },
     {
         timestamps: true
     });
 
-MenteeSchema.methods.generateJwtToken = function () {
+AdminSchema.methods.generateJwtToken = function () {
     return jwt.sign({ user: this._id.toString() }, process.env.JWT_TOKEN, {expiresIn: "8h"});
 };
 
 //custom login
-MenteeSchema.statics.findByEmailAndPassword =
+AdminSchema.statics.findByEmailAndPassword =
     async ({ email, password}) => {
         //check whether user exists
-        const user = await MenteeModel.findOne({ email });
+        const user = await AdminModel.findOne({ email });
         
         if (!user) {
             throw new Error("User does not exist");
@@ -51,7 +46,7 @@ MenteeSchema.statics.findByEmailAndPassword =
 
 //hashing and salting
 
-MenteeSchema.pre("save", function (next) {
+AdminSchema.pre("save", function (next) {
     const user = this;
     //password is not modified  
     if (!user.isModified("password")) return next();
@@ -70,5 +65,5 @@ MenteeSchema.pre("save", function (next) {
 
 });
 
-const MenteeModel = mongoose.model("Mentee", MenteeSchema);
-module.exports = MenteeModel;
+const AdminModel = mongoose.model("Admin", AdminSchema);
+module.exports = AdminModel;

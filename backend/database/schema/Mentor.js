@@ -17,9 +17,14 @@ const MentorSchema = new mongoose.Schema({
     {
         type: String
     },
+    language:{
+        type: String,
+        lowercase: true,
+        trim: true,
+    },
     status:{
         type:String,
-        default: 'Available'
+        default: 'available'
     }
     },
     {
@@ -34,8 +39,8 @@ MentorSchema.methods.generateJwtToken = function () {
 MentorSchema.statics.findByEmailAndPassword =
     async ({ email, password}) => {
         //check whether user exists
-        const user = await MentorSchema.findOne({ email });
-        
+        const user = await MentorModel.findOne({ email });
+    
         if (!user) {
             throw new Error("User does not exist");
         }

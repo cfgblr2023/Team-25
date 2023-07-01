@@ -6,6 +6,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
 import SignUp from "./mentor/SignUp";
 import MentorDashboard from "./mentor/MentorDashboard";
+
+// import Login from './components/Login';
+import LandingPage from "./components/LandingPage";
+import Tabs from "./components/Tabs";
+import Admin from "./admin/admin";
+
 function App() {
   const [user, setLoginUser] = useState();
 
