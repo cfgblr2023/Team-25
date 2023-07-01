@@ -22,8 +22,6 @@ import Batches from "./components/Batches";
 import MenteeDashboard from "./mentee/MenteeDashboard";
 import SignUp from "./mentor/SignUp"
 import Add from "./admin/Add";
-import Batches from "./components/Batches";
-
 
 
 function App() {
