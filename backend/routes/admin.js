@@ -33,10 +33,10 @@ Router.delete('/module/:id',async(req, res)=>{
 
 Router.post('/add-admin',async(req, res)=>{
     try {
-        const newAdmin = await Admin.create({...req.body});
+        const newAdmin = await AdminModel.create({...req.body});
     
     
-          return res.status(200).json({ token, admin: newAdmin, success: true , message:"Admin added Successfully"});
+          return res.status(200).json({  admin: newAdmin, success: true , message:"Admin added Successfully"});
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
         
@@ -46,7 +46,7 @@ Router.post('/add-admin',async(req, res)=>{
     Router.delete('/add-admin/:id',async(req, res)=>{
         try {
             const {id} = req.params;
-            const del = await Admin.findByIdAndDelete(id);
+            const del = await AdminModel.findByIdAndDelete(id);
             return res.statusCode(200).json({success:true, message:"Admin deleted Successfully"})
         } catch (error) {
             return res.status(500).json({ message: error.message, success: false });
