@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/landingPage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router";
-import Smile from '@mui/icons-material/SentimentSatisfiedAlt';
+import { Link } from "react-router-dom";
 
 export default function LandingPage() {
 
