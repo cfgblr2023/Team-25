@@ -10,6 +10,7 @@ const ses = require("../services/aws");
 const MentorModel = require("../database/schema/Mentor");
 const verifyMentor = require("../middleware/verifyMentee");
 const AdminModel = require("../database/schema/admin");
+const verifyAdmin = require("../middleware/verifyAdmin");
 
 
 

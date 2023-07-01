@@ -7,7 +7,11 @@ import{
   Routes,
   Route
 } from "react-router-dom";
-import Login from './components/Login';
+// import Login from './components/Login';
+import LandingPage from './components/LandingPage';
+import Tabs from './components/Tabs';
+import Admin from './admin/admin';
+
 function App() {
 
   const [user,setLoginUser] = useState()
@@ -20,11 +24,16 @@ function App() {
   return (
     <div className="App">
       <Router>
-        HOME
+        {/* <LandingPage/> */}
       
       <Routes>
             
-            <Route path="/login" element={<Login  updateParentState={handleUpdate}/>}/>
+            <Route path="/" element={<LandingPage  />}/>
+            <Route path="/tabs" element={<Tabs updateParentState={handleUpdate} />}/>
+            <Route path="/admin" element={<Admin />}/>
+
+
+            {/* <Route path="/login" element={<Login  updateParentState={handleUpdate}/>}/> */}
             
             
             

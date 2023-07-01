@@ -1,9 +1,11 @@
 import React from 'react'
-
-export default function admin() {
+import NavComp from '../components/NavComp'
+import CSVUploader from '../components/CSVUploader'
+export default function Admin() {
   return (
-    <div>
-      admin
+    <div >
+      <NavComp/>
+      <CSVUploader/>
     </div>
   )
 }
