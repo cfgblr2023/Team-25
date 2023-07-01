@@ -7,7 +7,7 @@ const moduleSchema = new mongoose.Schema({
   session: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Session', required: true }],
   progress: {
     type: Boolean,
-    default: 0
+    default: false
   }
 });
 

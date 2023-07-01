@@ -30,12 +30,7 @@ function App() {
             
             <Route path="/" element={<LandingPage  />}/>
             <Route path="/tabs" element={<Tabs updateParentState={handleUpdate} />}/>
-            <Route path="/admin" element={<Admin />}/>
-
-
-            {/* <Route path="/login" element={<Login  updateParentState={handleUpdate}/>}/> */}
-            
-            
+            <Route path="/admin" element={<Admin />}/>           
             
         </Routes>
       

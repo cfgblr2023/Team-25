@@ -26,10 +26,18 @@ Router.delete('/module/:id', async (req, res) => {
     }
 });
 
-Router.post('/session', async (req, res) => {
+Router.post('/session/:moduleId', async (req, res) => {
     try {
+        const {moduleId} = req.params;
         const newSession = await SessionsModel.create({ ...req.body });
-
+        await Module.findByIdAndUpdate(moduleId,{
+           $push:{
+            session:newSession._id
+           }
+        },{
+            new: true,
+            upsert: true
+        })
 
         return res.status(200).json({ token, session: newSession, success: true, message: "Session created Successfully" });
     } catch (error) {
@@ -145,7 +153,18 @@ Router.put('/progress/:moduleId', async (req, res) => {
     }
 });
 
-Router
+//to do upcoming sessions
+
+//mentee APIs
+
+Router.get('/upcoming', async (req,res)=>{
+    try {
+        return res.json({});
+    } catch (error) {
+        console.log(error);
+        return res.status(500)
+    }
+});
 
 
 
