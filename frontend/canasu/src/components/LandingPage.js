@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/landingPage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 export default function LandingPage() {
 
@@ -30,12 +31,12 @@ export default function LandingPage() {
           </i>
           <div className="row d-flex justify-content-center mt-5">
             <div className="col-6 ">
-              <button type="button" className="btn btn-warning btn-lg">
+              <Link to={"/login"} type="button" className="btn btn-warning btn-lg">
                 Login
-              </button>
-              <button type="button" className="ms-2 btn btn-warning btn-lg">
+              </Link>
+              <Link to={"/signup"} type="button" className="ms-2 btn btn-warning btn-lg">
                 SignUp
-              </button>
+              </Link>
             </div>
           </div>
         </p>

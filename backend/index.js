@@ -9,8 +9,6 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true, limit : '10mb'}));
 app.use(cors());
 
-
-
 //routes
 
 const authRoute = require('./routes/auth');
