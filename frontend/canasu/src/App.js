@@ -17,6 +17,9 @@ import ProtectedRoute from "./wrapper/ProtectedRoute";
 import { Toaster } from "react-hot-toast";
 import MentorDashboard from "./mentor/MentorDashboard";
 import Batches from "./components/Batches";
+import MenteeDashboard from "./mentee/MenteeDashboard";
+import SignUp from "./mentor/SignUp"
+
 
 function App() {
   return (

@@ -37,7 +37,7 @@
   font-weight: 900;
 }
 
-.bar-mentor{
+.bar-mentor {
   display: flex;
   flex-direction: row;
 }
@@ -127,4 +127,17 @@
   position: relative;
   top: 150px;
   left: -15px;
+}
+
+.student_joinbtn {
+  margin-top: 20px;
+  background-color: #9debf0;
+  padding: 0px 30px;
+  /* margin: 10px; */
+  border-radius: 20px;
+  border: 2px solid rgb(7, 160, 142);
+}
+
+.joinbtn{
+font-weight: 700;
 }
