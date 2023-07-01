@@ -4,6 +4,9 @@
   background-color: rgb(213, 247, 233);
   display: flex;
   /* position: fixed; */
+  flex-wrap: wrap;
+  justify-content: space-between;
+
 }
 
 .sidebar {
@@ -23,7 +26,7 @@
 .mainContainer {
   width: 100%;
   border-radius: 20px;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   margin: auto;
 }
 .mentorHeading {
@@ -58,12 +61,13 @@
 
 .batchBody {
   padding: 50px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 50px;
   margin: auto;
   position: relative;
-  left: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
 }
 
 .logoMentor {
@@ -140,4 +144,24 @@
 
 .joinbtn{
 font-weight: 700;
+}
+
+
+/* Media query for screens with a maximum width of 768px */
+@media (max-width: 768px) {
+  .mentordashboard {
+    flex-basis: 100%; /* Change flex-basis to 100% for smaller screens */
+  }
+}
+@media (max-width: 768px) {
+  .mentordashboard {
+    /* flex: 0 calc(33.33% - 10px); Adjust flex properties for the desired number of items */
+  }
+}
+
+/* Media query for screens with a minimum width of 992px */
+@media (min-width: 992px) {
+  .mentordashboard {
+    flex: 1 0 33.33%; /* Change flex properties for larger screens */
+  }
 }

@@ -25,13 +25,9 @@ body {
   margin: 10px 30px;
   border-radius: 20px;
   border: 3px solid rgb(43, 173, 111);
+  padding: 10px 20px;
 }
 
-.moduleUl {
-  /* margin: 10px 30px ; */
-  background-color: #d4f4e1;
-  border-radius: 12px;
-}
 
 .field {
   font-weight: bolder;
@@ -57,4 +53,5 @@ body {
   font-weight: 900;
   margin: auto;
   padding: 10px 50px;
+  margin-bottom: 50px;
 }

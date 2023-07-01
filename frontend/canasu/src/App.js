@@ -16,30 +16,35 @@ import Tabs from "./components/Tabs";
 import Admin from "./admin/admin";
 import { serviceGet } from "./utils/api";
 import ProtectedRoute from "./wrapper/ProtectedRoute";
+import { Toaster } from "react-hot-toast";
 import MentorDashboard from "./mentor/MentorDashboard";
+import Batches from "./components/Batches";
 import MenteeDashboard from "./mentee/MenteeDashboard";
 import SignUp from "./mentor/SignUp"
 import Batches from "./components/Batches";
 import ModulePage from "./mentor/ModulePage"
 import Modules_new from "./components/Modules_new";
 import FooterComp from "./components/FooterComp";
+import Add from "./admin/Add";
 
 
 function App() {
   return (
     <div className="App">
+      <Toaster/>
       <Router>
       
       <Routes>
             
             <Route path="/" element={<LandingPage  />}/>
             <Route path="/login" element={<Tabs  />}/>
-            {/* <Route path="/admin" element={<ProtectedRoute><AdminWrapper /></ProtectedRoute>}> */}
+            <Route path='/signup' element={<SignUp/>}/>
             <Route path="/admin" element={<AdminWrapper />}>
-              <Route index element={<Navigate to="/admin/batch"/>}/>
-                <Route path="batch" element={<Batches/>}/>
-                <Route  element={<Navigate to="/admin/batch/id"/>}/>
-                <Route path="batch/id" element={<Modules_new/>}/>
+            {/* <Route path="/admin" element={<ProtectedRoute><AdminWrapper /></ProtectedRoute>}> */}
+              <Route index element={<Navigate to="/admin/batches"/>}/>
+                <Route path="batches" element={<Batches/>}/>
+                <Route path="batch/:id" element={<Modules_new/>}/>
+                <Route path="add" element={<Add/>}/>
             </Route>
             
             {/* <Route path="/mentor" element={<ProtectedRoute><MentorWrapper /></ProtectedRoute>}> */}

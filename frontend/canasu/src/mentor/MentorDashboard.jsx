@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/MentorDashboard.css";
 import BaseComponent from "bootstrap/js/dist/base-component";
 import BatchCard from "./BatchCard";
-import NavComp from "../components/NavComp";
-
+import { toast } from "react-hot-toast";
+import { serviceGet } from "../utils/api";
 
 const MentorDashboard = () => {
+  const [batches, setbatches] = useState([]);
+  const token = localStorage.getItem("token");
+  const getBatches = async()=>{
+    try {
+      const {batch} = await serviceGet('/mentor/batch',{
+        'auth': `bearer ${token}`
+      });
+      setbatches(batch)
+    } catch (error) {
+      toast.error('something went wrong');
+    }
+  }
+  useEffect(() => {
+   getBatches(); 
+  }, [])
+  
   return (
     <>
-    
       <div className="mentordashboard">
         {/* <div className="sidebar">
           <div className="logoMentor">
@@ -32,12 +47,11 @@ const MentorDashboard = () => {
             <h1 className="batchHeading"> Scheduled Batches</h1>
           </div>
           <div className="batchBody">
-            <BatchCard />
-            <BatchCard />
-            <BatchCard />
-            <BatchCard />
-            <BatchCard />
-            <BatchCard />
+            {
+              batches.map((batch,i)=>{
+                return <BatchCard batch={batch} idx={i+1}/>
+              })  
+            }
           </div>
         </div>
       </div>
