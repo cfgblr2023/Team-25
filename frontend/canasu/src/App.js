@@ -22,6 +22,8 @@ import Batches from "./components/Batches";
 import MenteeDashboard from "./mentee/MenteeDashboard";
 import SignUp from "./mentor/SignUp"
 import Add from "./admin/Add";
+import Batches from "./components/Batches";
+
 
 
 function App() {
@@ -44,14 +46,14 @@ function App() {
             
             {/* <Route path="/mentor" element={<ProtectedRoute><MentorWrapper /></ProtectedRoute>}> */}
             <Route path="/mentor" element={<MentorWrapper />}>
-              <Route index element={<Navigate to="/mentor/batches"/>}/>
-                <Route path="batches" element={<h1>blah</h1>}/>
+              <Route index element={<Navigate to="/mentor/dashboard"/>}/>
+                <Route path="dashboard" element={<MentorDashboard/>}/>
             </Route>
 
             {/* <Route path="/student" element={<ProtectedRoute><MenteeWrapper /></ProtectedRoute>}> */}
             <Route path="/student" element={<MenteeWrapper />}>
-              <Route index element={<Navigate to="/student/batches"/>}/>
-                <Route path="batches" element={<h1>blah</h1>}/>
+              <Route index element={<Navigate to="/student/dashboard"/>}/>
+                <Route path="dashboard" element={<MenteeDashboard/>}/>
             </Route>
 
             {/* <Route path="/batches" element={<Batches />}/> */}
