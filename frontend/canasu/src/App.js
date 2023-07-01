@@ -8,7 +8,9 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import AdminWrapper from "./wrapper/AdminWrapper";
+import AdminWrapper from './wrapper/AdminWrapper';
+import MenteeWrapper from "./wrapper/MenteeWrapper";
+import MentorWrapper from "./wrapper/MentorWrapper";
 import LandingPage from "./components/LandingPage";
 import Tabs from "./components/Tabs";
 import Admin from "./admin/admin";
@@ -31,15 +33,24 @@ function App() {
             
             <Route path="/" element={<LandingPage  />}/>
             <Route path="/login" element={<Tabs  />}/>
-            {/* <Route path="/admin" element={<ProtectedRoute type={`admin`}><AdminWrapper /></ProtectedRoute>}> */}
-            <Route path="/admin" element={<AdminWrapper />}>
-              <Route index element={<Batches/>}/>
-                <Route path="batches" element={<Batches/>}/>
-              </Route>
+            <Route path="/admin" element={<ProtectedRoute><AdminWrapper /></ProtectedRoute>}>
+              <Route index element={<Navigate to="/admin/batches"/>}/>
+                <Route path="batches" element={<h1>blah</h1>}/>
+            </Route>
+            
+            <Route path="/mentor" element={<ProtectedRoute><MentorWrapper /></ProtectedRoute>}>
+              <Route index element={<Navigate to="/admin/batches"/>}/>
+                <Route path="batches" element={<h1>blah</h1>}/>
+            </Route>
+
+            <Route path="/student" element={<ProtectedRoute><MenteeWrapper /></ProtectedRoute>}>
+              <Route index element={<Navigate to="/admin/batches"/>}/>
+                <Route path="batches" element={<h1>blah</h1>}/>
+            </Route>
+
             {/* <Route path="/batches" element={<Batches />}/> */}
              
 
-        
         </Routes>
       </Router>
     </div>
