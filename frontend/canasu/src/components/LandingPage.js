@@ -1,8 +1,18 @@
 import React from "react";
 import "../styles/landingPage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from "react-router";
 
 export default function LandingPage() {
+
+
+  const navigate = useNavigate();
+
+  const handleLoginSubmit = () => {
+    navigate("/login")
+  };
+
+
   return (
     <>
       <img
@@ -13,7 +23,7 @@ export default function LandingPage() {
         className="container-fluid d-flex ms-0 flex-column justify-content-center align-items-center overflow-auto"
         id="landingPageContainer1"
       >
-        <p className="h3 text-dark">
+        <p className="h3 text-light">
           <i>
             Our vision is to create a world in which all women determine the
             course of their lives & reach their full potential.
@@ -52,11 +62,7 @@ export default function LandingPage() {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla
               voluptatibus expedita, dicta natus repellendus temporibus.
             </p>
-            <p>
-              <a className="btn btn-warning mb-5" href="#">
-                View details »
-              </a>
-            </p>
+           
           </div>
 
           <div className="col-3 d-flex flex-column">
@@ -71,11 +77,7 @@ export default function LandingPage() {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla
               voluptatibus expedita, dicta natus repellendus temporibus.
             </p>
-            <p>
-              <a className="btn btn-warning mb-5" href="#">
-                View details »
-              </a>
-            </p>
+         
           </div>
 
           <div className="col-3 d-flex flex-column">
