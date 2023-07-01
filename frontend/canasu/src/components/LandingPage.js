@@ -36,8 +36,16 @@ export default function LandingPage() {
               </button>
               <button type="button" className="ms-2 btn btn-warning btn-sm bg-warning">
                 SignUp
-              </button>
+                </button>
+            <div className="col-6 ">
+              <Link to={"/login"} type="button" className="btn btn-warning btn-lg">
+                Login
+              </Link>
+              <Link to={"/signup"} type="button" className="ms-2 btn btn-warning btn-lg">
+                SignUp
+              </Link>
             </div>
+          </div>
           </div>
         </p>
       </div>
@@ -101,6 +109,7 @@ export default function LandingPage() {
             <p>
              
             </p>
+           
           </div>
 
           <div className="col-3 d-flex flex-column">

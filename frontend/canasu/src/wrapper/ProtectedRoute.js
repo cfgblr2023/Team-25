@@ -7,12 +7,13 @@ const ProtectedRoute = (props) => {
     const navigate = useNavigate();
     useEffect(() => {
         const func = async()=>{
-          if(localStorage.getItem('token') && localStorage.getItem('type')){
+          if(localStorage.getItem('token') ){
             try {
-                const {user, success} = await serviceGet(`/auth/${localStorage.getItem('type')}/verify`,{
+                const {user, success} = await serviceGet(`/auth/${props.type}/verify`,{
                     auth:  `bearer ${localStorage.getItem('token')}`
                 })
                 
+                if(success) return props.children;
             } catch (error) {
                 navigate('/login');
             }
@@ -20,8 +21,6 @@ const ProtectedRoute = (props) => {
         }
         func();
       }, [])
- if(success) return props.children;
- return <Navigate to="/login"/>
 }
 
 export default ProtectedRoute

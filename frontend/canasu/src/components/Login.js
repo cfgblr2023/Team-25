@@ -3,6 +3,8 @@ import "../styles/login.css";
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css";
+import { servicePost } from "../utils/api";
+import { toast } from "react-hot-toast";
 
 export default function Login({type}) {
 
@@ -27,19 +29,13 @@ export default function Login({type}) {
   const login = async() => {
     console.log(user)
     try {
-      await axios.post("http://localhost:5000/login", user)
-      .then(res => {
-          alert(res.data.message)
-          if(res.data.user)
-          {
-            navigate("/login")
-            // console.log(res.data.user)
-          }  
-          
-      })
-      
+      const t = type===1 ? "admin" : type===2 ? "mentor" : "student"
+      const {token, user: profile} = await servicePost(`/auth/${t}/signin`, {...user})
+      localStorage.setItem('token', token);
+      localStorage.setItem('type', t);
+      navigate(`/${t}`);
     } catch (error) {
-      
+      toast.error("something went wrong")      
     }
 }
   return (

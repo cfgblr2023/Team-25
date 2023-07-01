@@ -6,7 +6,7 @@ const TEST_MODE = window.location.href.includes("localhost")? true : false;
 export const servicePost = async (path, payload, headers = null) => {
     return new Promise((resolve, reject) => {
         axios
-            .post(`localhost:4000${path}`, payload, {
+            .post(`http://localhost:4000${path}`, payload, {
                 headers: headers,
             })
             .then(function (response) {
@@ -21,7 +21,7 @@ export const servicePost = async (path, payload, headers = null) => {
 export const serviceGet = async (path, headers) => {
     return new Promise((resolve, reject) => {
         axios
-            .get(`localhost:4000${path}`, {
+            .get(`http://localhost:4000${path}`, {
                 headers: headers
             })
             .then(function (response) {
@@ -36,7 +36,7 @@ export const serviceGet = async (path, headers) => {
 export const servicePut = async (path, payload, headers = null) => {
     return new Promise((resolve, reject) => {
         axios
-            .put(`localhost:4000${path}`, payload, {
+            .put(`http://localhost:4000${path}`, payload, {
                 headers: headers,
             })
             .then(function (response) {
@@ -51,7 +51,7 @@ export const servicePut = async (path, payload, headers = null) => {
 export const serviceDelete = async (path, headers) => {
     return new Promise((resolve, reject) => {
         axios
-            .delete(`localhost:4000${path}`, {
+            .delete(`http://localhost:4000${path}`, {
                 headers: headers
             })
             .then(function (response) {
