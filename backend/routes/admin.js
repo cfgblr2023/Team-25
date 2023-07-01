@@ -76,6 +76,19 @@ Router.get('/mentor', async (req, res) => {
         return res.status(500).json({ message: error.message, success: false });
     }
 });
+Router.put('/mentor/:id', async (req, res) => {
+    try {
+        const {id} = req.params;
+        const mentor = await MentorModel.findByIdAndUpdate(id,{
+            $set:{
+                status:"available"
+            }
+        });
+        return res.statusCode(200).json({ message: "updated all mentor", mentor, success });
+    } catch (error) {
+        return res.status(500).json({ message: error.message, success: false });
+    }
+});
 Router.put('/batch/mentor', async (req, res) => {
     try {
         const { batchId, mentorId } = req.query;
