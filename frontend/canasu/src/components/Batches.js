@@ -62,7 +62,7 @@ useEffect(() => {
 const navigate = useNavigate();
 
   const handleRowClick = () => {
-    navigate("/batches/module")
+    navigate("/batche/module")
   };
 
   
@@ -84,7 +84,7 @@ const navigate = useNavigate();
             (row)=>{
               console.log(row);
               return(
-                <tr className="Batches-tableRow" key={row.id} onClick={handleRowClick}>
+                <tr className="Batches-tableRow" key={row._id} onClick={()=>{navigate(`/admin/batch/${row._id}`)}}>
                   <td key={row._id}>{row.mentor?.name}</td>
                   <td key={row._id}>{row.mentee?.name}</td>
                   <td key={row._id}>{row.mentor?.language}</td>
