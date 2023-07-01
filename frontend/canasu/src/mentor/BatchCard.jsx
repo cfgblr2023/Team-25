@@ -1,9 +1,13 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import img from "./mentoring.png"
-
+import { useNavigate } from "react-router-dom";
 
 function BatchCard() {
+  const navigate= useNavigate();
+  const handleMentorClick = () => {
+    navigate("/mentor/id");
+  };
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src={img} />
@@ -14,7 +18,7 @@ function BatchCard() {
           <h6>Course Name</h6>
 
         </Card.Text>
-        <Button variant="primary"> Check Modules </Button>
+        <Button variant="primary" onClick={handleMentorClick }> Check Modules </Button>
       </Card.Body>
     </Card>
   );
