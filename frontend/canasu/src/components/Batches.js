@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavComp from "./NavComp";
 import "../styles/batches.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { useNavigate } from "react-router-dom";
+import { serviceGet } from "../utils/api";
+import { toast } from "react-hot-toast";
 
 export default function Batches() {
   const mentor_mapping = [
@@ -42,6 +44,21 @@ export default function Batches() {
     
   
 ]
+const [batches, setbatches] = useState([]);
+useEffect(() => {
+  try {
+    const func = async ()=>{
+     const {batches, message} = await serviceGet('/admin/batch');
+      toast.success(message);
+      setbatches(batches);
+    }
+    
+    func();
+  } catch (error) {
+    toast.error("something went wrong");
+  }
+}, [])
+
 const navigate = useNavigate();
 
   const handleRowClick = () => {
@@ -63,13 +80,14 @@ const navigate = useNavigate();
             </tr>
           </thead>
           <tbody>
-           {mentor_mapping.map(
+           {batches.map(
             (row)=>{
+              console.log(row);
               return(
                 <tr className="Batches-tableRow" key={row.id} onClick={handleRowClick}>
-                  <td key={row.id}>{row.mentor}</td>
-                  <td key={row.id}>{row.mentee}</td>
-                  <td key={row.id}>{row.language}</td>
+                  <td key={row._id}>{row.mentor?.name}</td>
+                  <td key={row._id}>{row.mentee?.name}</td>
+                  <td key={row._id}>{row.mentor?.language}</td>
               </tr>
               )
               

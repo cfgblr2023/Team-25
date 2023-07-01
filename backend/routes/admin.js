@@ -6,7 +6,7 @@ const BatchModel = require("../database/schema/Batch");
 const ses = require("../services/aws");
 const Module = require("../database/schema/Module");
 const AdminModel = require("../database/schema/admin");
-
+const jwt = require('jsonwebtoken')
 const Router = express.Router();
 
 //add mentees 
@@ -61,6 +61,7 @@ Router.post('/add/mentee', async (req, res) => {
                 } else console.log(data);
             });
         }
+        return res.status(200).json({message: "added students successfully", success: true});
     } catch (error) {
         console.log(error);
         return res.status(500).json({ message: error.message, success: false });
@@ -149,11 +150,10 @@ Router.delete('/add-admin/:id', async (req, res) => {
 
 Router.get('/batch', async (req, res) => {
     try {
+        const batches = await BatchModel.find({}).populate('mentor mentee');
 
-        const newBatch = await BatchModel.find({});
 
-
-        return res.status(200).json({ token, admin: newAdmin, success: true, message: "Batch fetched Successfully" });
+        return res.status(200).json({ batches, success: true, message: "Batches fetched Successfully" });
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
 

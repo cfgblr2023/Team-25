@@ -7,12 +7,12 @@ const BatchSchema = new mongoose.Schema({
     },
     mentor:{
         type: mongoose.Types.ObjectId,
-        ref:'mentors',
+        ref:'Mentor',
         required: true
     },
     mentee:{
         type: mongoose.Types.ObjectId,
-        ref:'mentees',
+        ref:'Mentee',
         required: true
     },
     

@@ -35,6 +35,7 @@ MenteeSchema.methods.generateJwtToken = function () {
 MenteeSchema.statics.findByEmailAndPassword =
     async ({ email, password}) => {
         //check whether user exists
+        console.log(email, password);
         const user = await MenteeModel.findOne({ email });
         
         if (!user) {
