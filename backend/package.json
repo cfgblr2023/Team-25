@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "this is the bakend service for our problem statement",
   "main": "index.js",
+  "proxy": "http://localhost",
   "scripts": {
     "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"

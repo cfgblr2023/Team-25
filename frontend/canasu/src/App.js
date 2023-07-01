@@ -14,6 +14,7 @@ import Tabs from "./components/Tabs";
 import Admin from "./admin/admin";
 import { serviceGet } from "./utils/api";
 import ProtectedRoute from "./wrapper/ProtectedRoute";
+import { Toaster } from "react-hot-toast";
 
 function App() {
  
@@ -21,14 +22,16 @@ function App() {
 
   return (
     <div className="App">
+      <Toaster/>
       <Router>
       
       <Routes>
             
             <Route path="/" element={<LandingPage  />}/>
             <Route path="/login" element={<Tabs  />}/>
-            <Route path="/admin" element={<ProtectedRoute><AdminWrapper /></ProtectedRoute>}>
-              <Route index element={<Navigate to="/admin/batches"/>}/>
+            {/* <Route path="/admin" element={<ProtectedRoute type={`admin`}><AdminWrapper /></ProtectedRoute>}> */}
+            <Route path="/admin" element={<AdminWrapper />}>
+              <Route index element={<h1>blah</h1>}/>
                 <Route path="batches" element={<h1>blah</h1>}/>
               </Route>
             {/* <Route path="/batches" element={<Batches />}/> */}
