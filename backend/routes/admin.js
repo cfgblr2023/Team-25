@@ -71,7 +71,7 @@ Router.post('/add/mentee', async (req, res) => {
 Router.get('/mentor', async (req, res) => {
     try {
         const mentors = await MentorModel.find({});
-        return res.statusCode(200).json({ message: "Fetched all mentore", mentors, success });
+        return res.status(200).json({ message: "Fetched all mentore", mentors, success: true });
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
     }
@@ -151,9 +151,7 @@ Router.get('/batch', async (req, res) => {
     try {
 
         const newBatch = await BatchModel.find({});
-
-
-        return res.status(200).json({ token, admin: newAdmin, success: true, message: "Batch fetched Successfully" });
+        return res.status(200).json({ admin: newBatch, success: true, message: "Batch fetched Successfully" });
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
 
@@ -216,7 +214,7 @@ Router.get('/feedback/:batchId', async (req, res) => {
         const { batchId } = req.params;
         const newFeedback = await FeedbackModel.findById(batchId);
 
-        return res.status(200).json({ token, admin: newAdmin, success: true, message: "Feedback received Successfully" });
+        return res.status(200).json({ admin: newAdmin, success: true, message: "Feedback received Successfully" });
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
 

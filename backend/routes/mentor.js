@@ -10,7 +10,7 @@ Router.post('/module', async (req, res) => {
         const newModule = await Module.create({ ...req.body });
 
 
-        return res.status(200).json({ token, module: newModule, success: true, message: "Module created Successfully" });
+        return res.status(200).json({ module: newModule, success: true, message: "Module created Successfully" });
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
 
@@ -20,7 +20,7 @@ Router.delete('/module/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const del = await Module.findByIdAndDelete(id);
-        return res.statusCode(200).json({ success: true, message: "Module deleted Successfully" })
+        return res.status(200).json({ success: true, message: "Module deleted Successfully" })
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
     }
@@ -39,7 +39,7 @@ Router.post('/session/:moduleId', async (req, res) => {
             upsert: true
         })
 
-        return res.status(200).json({ token, session: newSession, success: true, message: "Session created Successfully" });
+        return res.status(200).json({ session: newSession, success: true, message: "Session created Successfully" });
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
 
@@ -49,7 +49,7 @@ Router.delete('/session/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const del = await SessionsModel.findByIdAndDelete(id);
-        return res.statusCode(200).json({ success: true, message: "Session deleted Successfully" })
+        return res.status(200).json({ success: true, message: "Session deleted Successfully" })
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
     }
@@ -100,7 +100,7 @@ Router.get('/batch/:id', async (req, res) => {
         ]);
 
 
-        return res.status(200).json({ token, batch: batch, success: true, message: "Batch fetched Successfully" });
+        return res.status(200).json({ batch: batch, success: true, message: "Batch fetched Successfully" });
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
 
@@ -113,7 +113,7 @@ Router.get('/batch/:mentorId', async (req, res) => {
         const newBatch = await BatchModel.find({ mentor: mentorId }).populate("modules");
 
 
-        return res.status(200).json({ token, admin: newAdmin, success: true, message: "Batch fetched Successfully" });
+        return res.status(200).json({ admin: newAdmin, success: true, message: "Batch fetched Successfully" });
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
 
@@ -126,7 +126,7 @@ Router.get('/mentee/:menteeId', async (req, res) => {
         const Mentee = await MenteeModel.findById(mentorId);
 
 
-        return res.status(200).json({ token, admin: newAdmin, success: true, message: "Mentee fetched Successfully" });
+        return res.status(200).json({ admin: newAdmin, success: true, message: "Mentee fetched Successfully" });
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
 
@@ -146,7 +146,7 @@ Router.put('/progress/:moduleId', async (req, res) => {
         });
 
 
-        return res.status(200).json({ token, module: module, success: true, message: "modules fetched Successfully" });
+        return res.status(200).json({ module: module, success: true, message: "modules fetched Successfully" });
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
 
