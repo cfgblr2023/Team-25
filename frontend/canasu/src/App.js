@@ -1,25 +1,29 @@
 // import logo from './logo.svg';
 import './App.css';
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import{
   BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+  Navigate
 } from "react-router-dom";
 // import Login from './components/Login';
 import LandingPage from './components/LandingPage';
 import Tabs from './components/Tabs';
-import Admin from './admin/admin';
+import AdminWrapper from './wrapper/AdminWrapper';
+
 
 function App() {
+  useEffect(() => {
+    const func = ()=>{
+      if(localStorage.getItem('token')){
 
-  const [user,setLoginUser] = useState()
-
-  const handleUpdate = (newValue) => {
-    setLoginUser(newValue);
-  };
-
+      }
+    }
+    func();
+  }, [])
+  
 
   return (
     <div className="App">
@@ -29,8 +33,15 @@ function App() {
       <Routes>
             
             <Route path="/" element={<LandingPage  />}/>
-            <Route path="/tabs" element={<Tabs updateParentState={handleUpdate} />}/>
-            <Route path="/admin" element={<Admin />}/>           
+            <Route path="/login" element={<Tabs  />}/>
+            <Route path="/admin" element={<AdminWrapper />}>
+              <Route index element={<Navigate to="/admin/batches"/>}/>
+                <Route path="batches" element={<h1>blah</h1>}/>
+              </Route>
+            {/* <Route path="/batches" element={<Batches />}/> */}
+             
+
+            
             
         </Routes>
       
