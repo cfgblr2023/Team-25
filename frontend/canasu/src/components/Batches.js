@@ -82,11 +82,12 @@ const navigate = useNavigate();
           <tbody>
            {batches.map(
             (row)=>{
+              console.log(row);
               return(
                 <tr className="Batches-tableRow" key={row.id} onClick={handleRowClick}>
-                  <td key={row.id}>{row.mentor}</td>
-                  <td key={row.id}>{row.mentee}</td>
-                  <td key={row.id}>{row.language}</td>
+                  <td key={row._id}>{row.mentor?.name}</td>
+                  <td key={row._id}>{row.mentee?.name}</td>
+                  <td key={row._id}>{row.mentor?.language}</td>
               </tr>
               )
               
