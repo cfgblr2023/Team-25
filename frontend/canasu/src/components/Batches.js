@@ -45,7 +45,7 @@ export default function Batches() {
 const navigate = useNavigate();
 
   const handleRowClick = () => {
-    navigate("/batches/batch")
+    navigate("/batches/module")
   };
 
   
