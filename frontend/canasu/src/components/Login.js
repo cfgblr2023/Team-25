@@ -35,7 +35,7 @@ export default function Login({type}) {
       localStorage.setItem('type', t);
       navigate(`/${t}`);
     } catch (error) {
-      toast.error(error?.data?.message)      
+      toast.error("something went wrong")      
     }
 }
   return (
