@@ -16,6 +16,11 @@ const MenteeSchema = new mongoose.Schema({
     password:
     {
         type: String
+    },
+    language:{
+        type: String,
+        lowercase: true,
+        trim: true,
     }
     },
     {

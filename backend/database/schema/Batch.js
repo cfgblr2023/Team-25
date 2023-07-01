@@ -15,16 +15,11 @@ const BatchSchema = new mongoose.Schema({
         ref:'mentees',
         required: true
     },
-    startDate:{
-        type: Date
-    },
-    endDate:{
-        type: Date
-    },
-    modules: {
+    
+    modules: [{
         type: mongoose.Types.ObjectId,
         ref: "modules"
-    }
+    }]
     },
     {
         timestamps: true

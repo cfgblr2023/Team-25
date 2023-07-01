@@ -4,15 +4,15 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function Login({ updateParentState }) {
+export default function Login({type}) {
 
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
-    name: "",
+   
     email: "",
     password: "",
-    reEnterPassword: "",
+  
   });
 
   const handleChange = (e) => {
@@ -24,18 +24,23 @@ export default function Login({ updateParentState }) {
     }); 
   };
 
-  const login = () => {
-    axios.post("http://localhost:5000/login", user)
-    .then(res => {
-        alert(res.data.message)
-        if(res.data.user)
-        {
-          updateParentState(res.data.user);
-          navigate("/login")
-          // console.log(res.data.user)
-        }  
-        
-    })
+  const login = async() => {
+    console.log(user)
+    try {
+      await axios.post("http://localhost:5000/login", user)
+      .then(res => {
+          alert(res.data.message)
+          if(res.data.user)
+          {
+            navigate("/login")
+            // console.log(res.data.user)
+          }  
+          
+      })
+      
+    } catch (error) {
+      
+    }
 }
   return (
     <div className="loginWrapper">
@@ -57,8 +62,7 @@ export default function Login({ updateParentState }) {
           onChange={handleChange}
         ></input>
         <div className="button" onClick={login}>Login</div>
-        <div>or</div>
-        <div className="button" onClick={()=> navigate('/signup')} >Register</div>
+       
       </div>
     </div>
   );
