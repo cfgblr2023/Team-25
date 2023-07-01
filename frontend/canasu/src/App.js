@@ -11,6 +11,7 @@ import{
 import LandingPage from './components/LandingPage';
 import Tabs from './components/Tabs';
 import Admin from './admin/admin';
+import Batches from './components/Batches';
 
 function App() {
 
@@ -31,7 +32,8 @@ function App() {
             <Route path="/" element={<LandingPage  />}/>
             <Route path="/tabs" element={<Tabs updateParentState={handleUpdate} />}/>
             <Route path="/admin" element={<Admin />}/>
-
+            <Route path="/batches" element={<Batches />}/>
+             
 
             {/* <Route path="/login" element={<Login  updateParentState={handleUpdate}/>}/> */}
             
