@@ -30,7 +30,7 @@ export default function LandingPage() {
           </i>
           <div className="row d-flex justify-content-center mt-5">
             <div className="col-6 ">
-              <button type="button" className="btn btn-warning btn-lg">
+              <button type="button" className="btn btn-warning btn-lg" onClick={handleLoginSubmit}>
                 Login
               </button>
               <button type="button" className="ms-2 btn btn-warning btn-lg">
