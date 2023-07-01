@@ -4,8 +4,8 @@ const bcryptjs = require('bcryptjs');
 
 const Router = express.Router();
 
-const UserModel = require('../database/schema/User');
-const getUserStatus = require("../middleware/verifyUser");
+const UserModel = require('../database/schema/Mentee');
+const getUserStatus = require("../middleware/verifyMentee");
 const ses = require("../services/aws");
 
 
