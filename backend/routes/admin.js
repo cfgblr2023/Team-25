@@ -7,6 +7,7 @@ const ses = require("../services/aws");
 const Module = require("../database/schema/Module");
 const jwt = require('jsonwebtoken')
 const ResourcesModel = require("../database/schema/resources");
+const { default: mongoose } = require("mongoose");
 
 const Router = express.Router();
 
@@ -110,9 +111,11 @@ Router.put('/batch/mentor', async (req, res) => {
 });
 Router.post('/module', async (req, res) => {
     try {
+        const {bId} = req.query
         const newModule = await Module.create({ ...req.body });
-
-
+        await BatchModel.findByIdAndUpdate(bId,{
+            $push:{modules: newModule._id }
+        })
         return res.status(200).json({  module: newModule, success: true, message: "Module created Successfully" });
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
@@ -172,7 +175,7 @@ Router.get('/batch/:id', async (req, res) => {
             {
                 $match: {
                     $expr: {
-                        $eq: ['$_id', toObjectId(id)],
+                        $eq: ['$_id', new mongoose.Types.ObjectId(id)],
                     },
                 },
             },
@@ -184,7 +187,7 @@ Router.get('/batch/:id', async (req, res) => {
                         {
                             $match: {
                                 $expr: {
-                                    $eq: ['$_id', '$$modules'],
+                                    $in: ['$_id', '$$modules'],
                                 },
                             },
                         },
@@ -196,14 +199,16 @@ Router.get('/batch/:id', async (req, res) => {
                                     {
                                         $match: {
                                             $expr: {
-                                                $eq: ['$_id', '$$sessions'],
+                                                $in: ['$_id', '$$sessions'],
                                             },
                                         },
                                     }
-                                ]
+                                ],
+                                as:'sessions'
                             }
-                        }
-                    ]
+                        },
+                    ],
+                    as: 'modules'
                 }
             }
         ]);

@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import "../styles/Modules_new.css";
 import AddModule from "./AddModule";
+import { serviceGet } from "../utils/api";
+import { useParams } from "react-router-dom";
 export default function Modules_new() {
     const[toggleModal,setToggleModal]= useState(false);
   const module_data = [
@@ -43,6 +45,19 @@ export default function Modules_new() {
     setToggleModal(!toggleModal)
 
   }
+  const { id } = useParams()
+  const func = async()=>{
+    try {
+      const batch = await serviceGet(`/admin/batch/${id}`);
+      console.log(batch);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+   func()
+  }, [])
+  
   return (
     <>
     {toggleModal? <AddModule handleAddModule={handleAddModule}/> : 

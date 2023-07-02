@@ -22,7 +22,7 @@ import Batches from "./components/Batches";
 import MenteeDashboard from "./mentee/MenteeDashboard";
 import SignUp from "./mentor/SignUp"
 import ModulePage from "./mentor/ModulePage"
-import Modules_new from "./mentor/Modules_new";
+import Modules_new from "./components/Modules_new";
 import FooterComp from "./components/FooterComp";
 import Add from "./admin/Add";
 
