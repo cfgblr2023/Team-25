@@ -8,6 +8,7 @@ const Module = require("../database/schema/Module");
 const jwt = require('jsonwebtoken')
 const ResourcesModel = require("../database/schema/resources");
 const { default: mongoose } = require("mongoose");
+const SessionsModel = require("../database/schema/sessions");
 
 const Router = express.Router();
 
@@ -131,7 +132,35 @@ Router.delete('/module/:id', async (req, res) => {
         return res.status(500).json({ message: error.message, success: false });
     }
 });
+Router.post('/session/:moduleId', async (req, res) => {
+    try {
+        const {moduleId} = req.params;
+        const newSession = await SessionsModel.create({ ...req.body });
+        await Module.findByIdAndUpdate(moduleId,{
+           $push:{
+            session:newSession._id
+           }
+        },{
+            new: true,
+            upsert: true
+        })
 
+
+        return res.status(200).json({  session: newSession, success: true, message: "Session created Successfully" });
+    } catch (error) {
+        return res.status(500).json({ message: error.message, success: false });
+
+    }
+});
+Router.delete('/session/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const del = await SessionsModel.findByIdAndDelete(id);
+        return res.status(200).json({ success: true, message: "Session deleted Successfully" })
+    } catch (error) {
+        return res.status(500).json({ message: error.message, success: false });
+    }
+});
 Router.post('/add-admin', async (req, res) => {
     try {
         const newAdmin = await Admin.create({ ...req.body });

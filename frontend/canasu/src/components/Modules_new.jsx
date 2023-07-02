@@ -8,6 +8,7 @@ import AddSession from "./AddSession";
 export default function Modules_new() {
     const[toggleModal,setToggleModal]= useState(false);
     const[toggleSession,setToggleSession]= useState(false);
+    const [batch, setbatch] = useState([]);
   const module_data = [
     {
       id: 0,
@@ -50,7 +51,8 @@ export default function Modules_new() {
   const { id } = useParams()
   const func = async()=>{
     try {
-      const batch = await serviceGet(`/admin/batch/${id}`);
+      const {batch:b} = await serviceGet(`/admin/batch/${id}`);
+      setbatch(b);
       console.log(batch);
     } catch (error) {
       console.log(error);
@@ -58,9 +60,10 @@ export default function Modules_new() {
   }
   useEffect(() => {
    func()
-  }, [])
+  }, [toggleModal])
   
   const handleAddSession = () =>{
+ 
     setToggleSession(!toggleSession)
 
   }
@@ -70,19 +73,19 @@ export default function Modules_new() {
     <>
         <div className=" d-flex  justify-content-center mt-5 ">
       <Accordion className="w-50" defaultActiveKey="0">
-        {module_data.map((module) => {
+        {batch?.modules?.map((module) => {
           return (
             <>
                 
-                    <Accordion.Item eventKey={module.id}>
+                    <Accordion.Item eventKey={module._id}>
                     <Accordion.Header>{module.name}</Accordion.Header>
                     <Accordion.Body>
                       <div className="moduleFields ">
                         
                         <div className="Module-field desc mt-2 "><span>Description</span> :{module.description} </div>
-                        <div className="Module-field desc mt-2"><span>Start Date :</span>{module.startDate} </div>
-                        <div className="Module-field desc mt-2"><span>End Date :</span> {module.endDate}</div>
-                        <div className="Module-field desc mt-2"><span>Link:</span>{module.link} </div>
+                        <div className="Module-field desc mt-2"><span>Start Date :</span>{module?.session[0]?.start_date} </div>
+                        <div className="Module-field desc mt-2"><span>End Date :</span> {module?.session[0]?.end_date}</div>
+                        <div className="Module-field desc mt-2"><span>Link:</span>{module?.session[0]?.link} </div>
                         <div className="d-flex justify-content-between">
       
                         <button className="Module-deleteModule" onClick={handleAddSession}>Add Session</button>
@@ -90,7 +93,7 @@ export default function Modules_new() {
                         </div>
                       </div>
                       <div>
-                        {toggleSession && <AddSession handleAddSession={handleAddSession}/>}
+                        {toggleSession && <AddSession handleAddSession={handleAddSession} module={module?._id}/>}
                       </div>
                     </Accordion.Body>
                   </Accordion.Item>
