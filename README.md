@@ -1,5 +1,7 @@
- Nanasu Way
+# Nanasu Way
+A end-to-end platform for coordinating between mentors, mentees and the person in charge with the focus on cost effective strategies and basc technology utilisation.
 
+This application is created in accordance with the problem statement provided by the Canasu Dream Foundation for JPMC Code for Good 2023.
 ## Installation
 
 1. Make sure you have [Node.js](https://nodejs.org) installed.
@@ -12,11 +14,12 @@
 1. Start the backend server: `npm run start`
 2. The server will be running on `http://localhost:4000`.
 3. Create the .env file in backend folder with the following content:
-```MONGO_URL = <your mongo connection url>
+```
+MONGO_URL = <your mongo connection url>
 JWT_TOKEN = your jwt_token
 AWS_ACCESS_KEY = your aws access key
-AWS_SECRET_KEY = your aws secret key```
-   
+AWS_SECRET_KEY = your aws secret key
+```
 
 ## To run Frontend
 
