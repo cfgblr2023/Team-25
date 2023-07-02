@@ -22,6 +22,7 @@ import Batches from "./components/Batches";
 import MenteeDashboard from "./mentee/MenteeDashboard";
 import SignUp from "./mentor/SignUp"
 import Add from "./admin/Add";
+import ViewAdmins from "./admin/ViewAdmins";
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
                 <Route path="batches" element={<Batches/>}/>
                 <Route path="batch/:id" element={<h1>batch</h1>}/>
                 <Route path="add" element={<Add/>}/>
+                <Route path="viewAdmins" element={<ViewAdmins/>}/>
             </Route>
             
             {/* <Route path="/mentor" element={<ProtectedRoute><MentorWrapper /></ProtectedRoute>}> */}
