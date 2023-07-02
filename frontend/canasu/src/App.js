@@ -54,7 +54,7 @@ function App() {
               <Route index element={<Navigate to="/mentor/dashboard"/>}/>
                 <Route path="dashboard" element={<MentorDashboard/>}/>
                 <Route  element={<Navigate to="/mentor/batch/:id"/>}/>
-                <Route path="batch/:id" element={<Modules_new/>}/>
+                <Route path="batch/:id" element={<Modules_new branch="mentor"/>}/>
             </Route>
 
             {/* <Route path="/student" element={<ProtectedRoute><MenteeWrapper /></ProtectedRoute>}> */}
@@ -62,7 +62,7 @@ function App() {
               <Route index element={<Navigate to="/student/dashboard"/>}/>
                 <Route path="dashboard" element={<MenteeDashboard/>}/>
                 <Route  element={<Navigate to="/student/batch/id"/>}/>
-                <Route path="batch/:id" element={<Modules_new/>}/>
+                <Route path="batch/:id" element={<Modules_new branch="mentee"/>}/>
                 <Route  element={<Navigate to="/student/chat"/>}/>
                 <Route path="chat" element={<Chat/>}/>
                 

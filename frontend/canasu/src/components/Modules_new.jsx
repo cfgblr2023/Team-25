@@ -86,11 +86,16 @@ export default function Modules_new(props) {
                         <div className="Module-field desc mt-2"><span>Start Date :</span>{module?.session[0]?.start_date} </div>
                         <div className="Module-field desc mt-2"><span>End Date :</span> {module?.session[0]?.end_date}</div>
                         <div className="Module-field desc mt-2"><span>Link:</span>{module?.session[0]?.link} </div>
-                        <div className="d-flex justify-content-between">
+                        {
+                          props.branch !=="mentee" &&
+                          <div className="d-flex justify-content-between">
       
                         <button className="Module-deleteModule" onClick={handleAddSession}>Add Session</button>
                         <button className="Module-deleteModule">Delete</button>
                         </div>
+                        }
+                        
+
                       </div>
                       <div>
                         {toggleSession && <AddSession handleAddSession={handleAddSession} module={module?._id}/>}
