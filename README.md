@@ -35,7 +35,7 @@ AWS_SECRET_KEY = your aws secret key
 6. Learning modules can be added by both admin and mentor.
 
 
-## Team 25
+## Team #25
 1. Samarth Singh
 2. Anushka Paliwal
 3. Alisha Kushwaha
