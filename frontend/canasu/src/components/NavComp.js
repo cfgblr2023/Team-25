@@ -23,9 +23,12 @@ export default function NavComp(props) {
                 Batches
               </Nav.Link>
               {/* <Nav.Link as={Link} to={"/contact"}>Contact</Nav.Link> */}
+              {props.branch==="mentor" &&
               <Nav.Link as={Link} to={"/student/upcomming"}>
                 Upcomming Sessions
               </Nav.Link>
+              
+              }
               {props.branch==="student" && 
                 <Nav.Link as={Link} to={"/student/chat"}>
                 AI Chat

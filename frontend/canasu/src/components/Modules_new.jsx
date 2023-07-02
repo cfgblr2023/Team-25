@@ -5,7 +5,7 @@ import AddModule from "./AddModule";
 import { serviceGet } from "../utils/api";
 import { useParams } from "react-router-dom";
 import AddSession from "./AddSession";
-export default function Modules_new() {
+export default function Modules_new(props) {
     const[toggleModal,setToggleModal]= useState(false);
     const[toggleSession,setToggleSession]= useState(false);
     const [batch, setbatch] = useState([]);
@@ -105,7 +105,10 @@ export default function Modules_new() {
       </Accordion>
       
     </div>
-    <button className="Module-addModule mt-5" onClick={handleAddModule}>Add Module</button>
+    {props.branch !== "mentee" &&
+        <button className="Module-addModule mt-5" onClick={handleAddModule}>Add Module</button>
+    }
+    
     </>
     
     }

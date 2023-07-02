@@ -44,7 +44,7 @@ function App() {
             {/* <Route path="/admin" element={<ProtectedRoute><AdminWrapper /></ProtectedRoute>}> */}
               <Route index element={<Navigate to="/admin/batches"/>}/>
                 <Route path="batches" element={<Batches/>}/>
-                <Route path="batch/:id" element={<Modules_new/>}/>
+                <Route path="batch/:id" element={<Modules_new branch="admin"/>}/>
                 <Route path="add" element={<Add/>}/>
                 <Route path="viewAdmins" element={<ViewAdmins/>}/>
             </Route>
