@@ -45,11 +45,11 @@ function App() {
     <MDBContainer fluid>
 
       <MDBCard className='text-black m-5' style={{borderRadius: '25px'}}>
+              <h2 classNAme="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up as a Volunteer</h2>
         <MDBCardBody>
           <MDBRow>
             <MDBCol md='10' lg='6' className='order-2 order-lg-1 d-flex flex-column align-items-center'>
 
-              <p classNAme="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up as a Volunteer</p>
 
               <div className="d-flex flex-row align-items-center mb-4 ">
                 <MDBIcon fas icon="user me-3" size='lg'/>

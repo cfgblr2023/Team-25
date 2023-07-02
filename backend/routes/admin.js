@@ -7,6 +7,8 @@ const ses = require("../services/aws");
 const Module = require("../database/schema/Module");
 const jwt = require('jsonwebtoken')
 const ResourcesModel = require("../database/schema/resources");
+const { default: mongoose } = require("mongoose");
+const SessionsModel = require("../database/schema/sessions");
 
 const Router = express.Router();
 
@@ -113,11 +115,13 @@ Router.put('/batch/mentor', async (req, res) => {
 
     }
 });
-Router.post("/module", async (req, res) => {
-  try {
-    const newModule = await Module.create({ ...req.body });
-
-
+Router.post('/module', async (req, res) => {
+    try {
+        const {bId} = req.query
+        const newModule = await Module.create({ ...req.body });
+        await BatchModel.findByIdAndUpdate(bId,{
+            $push:{modules: newModule._id }
+        })
         return res.status(200).json({  module: newModule, success: true, message: "Module created Successfully" });
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
@@ -133,10 +137,38 @@ Router.delete('/module/:id', async (req, res) => {
         return res.status(500).json({ message: error.message, success: false });
     }
 });
+Router.post('/session/:moduleId', async (req, res) => {
+    try {
+        const {moduleId} = req.params;
+        const newSession = await SessionsModel.create({ ...req.body });
+        await Module.findByIdAndUpdate(moduleId,{
+           $push:{
+            session:newSession._id
+           }
+        },{
+            new: true,
+            upsert: true
+        })
 
-Router.post("/add-admin", async (req, res) => {
-  try {
-    const newAdmin = await Admin.create({ ...req.body });
+
+        return res.status(200).json({  session: newSession, success: true, message: "Session created Successfully" });
+    } catch (error) {
+        return res.status(500).json({ message: error.message, success: false });
+
+    }
+});
+Router.delete('/session/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const del = await SessionsModel.findByIdAndDelete(id);
+        return res.status(200).json({ success: true, message: "Session deleted Successfully" })
+    } catch (error) {
+        return res.status(500).json({ message: error.message, success: false });
+    }
+});
+Router.post('/add-admin', async (req, res) => {
+    try {
+        const newAdmin = await Admin.create({ ...req.body });
 
 
         return res.status(200).json({ admin: newAdmin, success: true, message: "Admin added Successfully" });
@@ -180,41 +212,57 @@ Router.get("/batch/:id", async (req, res) => {
       {
         $match: {
           $expr: {
-            $eq: ["$_id", toObjectId(id)],
+            $eq: ["$_id", new mongoose.Types.ObjectId(id)],
           },
         },
       },
-      {
-        $lookup: {
-          from: "modules",
-          let: { modules: "$modules" },
-          pipeline: [
+   
             {
-              $match: {
-                $expr: {
-                  $eq: ["$_id", "$$modules"],
-                },
-              },
-            },
-            {
-              $lookup: {
-                from: "sessions",
-                let: { sessions: "$sessions" },
-                pipeline: [
-                  {
-                    $match: {
-                      $expr: {
-                        $eq: ["$_id", "$$sessions"],
-                      },
-                    },
-                  },
-                ],
-              },
-            },
-          ],
-        },
-      },
-    ]);
+                $lookup: {
+                    from: "modules",
+                    let: { modules: '$modules' },
+                    pipeline: [
+                        {
+                            $match: {
+                                $expr: {
+                                    $in: ['$_id', '$$modules'],
+                                },
+                            },
+                        },
+                        {
+                            $addFields: {
+                              sessions: {
+                                $cond: {
+                                  if: {
+                                    $ne: [{ $type: '$session' }, 'array'],
+                                  },
+                                  then: [],
+                                  else: '$session',
+                                },
+                              },
+                            },
+                        },
+                        {
+                            $lookup: {
+                                from: "sessions",
+                                let: { session: '$session' },
+                                pipeline: [
+                                    {
+                                        $match: {
+                                            $expr: {
+                                                $in: ['$_id', '$$session'],
+                                            },
+                                        },
+                                    }
+                                ],
+                                as:'session'
+                            }
+                        },
+                    ],
+                    as: 'modules'
+                }
+            }
+        ]);
 
         return res.status(200).json({  batch, success: true, message: "Batch fetched Successfully" });
     } catch (error) {

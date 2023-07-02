@@ -3,7 +3,7 @@ const Module = require("../database/schema/Module");
 const SessionsModel = require("../database/schema/sessions");
 const MenteeModel = require("../database/schema/Mentee");
 const BatchModel = require("../database/schema/Batch");
-const verifyMentor = require("../middleware/verifyMentee");
+const verifyMentor = require("../middleware/verifyMentor");
 const Router = express.Router();
 
 Router.post("/module", async (req, res) => {
@@ -61,52 +61,53 @@ Router.delete('/session/:id', async (req, res) => {
     }
 });
 
-Router.get("/batch/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    // const batch = await BatchModel.findById(id).populate("Modules");
-    const [batch] = await BatchModel.aggregate([
-      {
-        $match: {
-          $expr: {
-            $eq: ["$_id", toObjectId(id)],
-          },
-        },
-      },
-      {
-        $lookup: {
-          from: "modules",
-          let: { modules: "$modules" },
-          pipeline: [
+Router.get('/batch/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        // const newBatch = await BatchModel.findById(id).populate("modules");
+        const [batch] = await BatchModel.aggregate([
             {
-              $match: {
-                $expr: {
-                  $eq: ["$_id", "$$modules"],
+                $match: {
+                    $expr: {
+                        $eq: ['$_id', new mongoose.Types.ObjectId(id)],
+                    },
                 },
               },
-            },
             {
-              $lookup: {
-                from: "sessions",
-                let: { sessions: "$sessions" },
-                pipeline: [
-                  {
-                    $match: {
-                      $expr: {
-                        $eq: ["$_id", "$$sessions"],
-                      },
-                    },
-                  },
-                ],
-              },
-            },
-          ],
-        },
-      },
-    ]);
+                $lookup: {
+                    from: "modules",
+                    let: { modules: '$modules' },
+                    pipeline: [
+                        {
+                            $match: {
+                                $expr: {
+                                    $in: ['$_id', '$$modules'],
+                                },
+                            },
+                        },
+                        {
+                            $lookup: {
+                                from: "sessions",
+                                let: { sessions: '$sessions' },
+                                pipeline: [
+                                    {
+                                        $match: {
+                                            $expr: {
+                                                $in: ['$_id', '$$sessions'],
+                                            },
+                                        },
+                                    }
+                                ],
+                                as:'sessions'
+                            }
+                        },
+                    ],
+                    as: 'modules'
+                }
+            }
+        ]);
 
-
-        return res.status(200).json({  batch: batch, success: true, message: "Batch fetched Successfully" });
+        return res.status(200).json({  batch, success: true, message: "Batch fetched Successfully" });
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
 

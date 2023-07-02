@@ -109,8 +109,9 @@ export default function Batches() {
             mentor={row.mentor?.name}
             mentee={row.mentee?.name}
             language={row.mentor?.language}
+            id={row._id}
             key={row.id}
-            onclick={handleRowClick}
+            // onclick={handleRowClick}
           />
         );
       })}

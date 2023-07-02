@@ -19,20 +19,20 @@ export default function NavCompAdmin() {
                 Login
               </Nav.Link> */}
               
-              <Nav.Link as={Link} to={"/addmentee"}>
+              <Nav.Link as={Link} to={"/admin/add"}>
                 Add Mentee
               </Nav.Link>
               {/* <Nav.Link as={Link} to={"/contact"}>Contact</Nav.Link> */}
-              <Nav.Link as={Link} to={"/viewadmin"}>
+              {/* <Nav.Link as={Link} to={"/viewadmin"}>
                 View admin
-              </Nav.Link>
+              </Nav.Link> */}
               
               
             </Nav>
             <Nav className="ml-auto">
                 
                 {/* <Nav.Link onClick={()=>updateParentState({})}>Logout</Nav.Link> */}
-                <Nav.Link as={Link} to={"batch"}>Hello Admin</Nav.Link>
+                <Nav.Link as={Link} to={"/admin"}>Hello Admin</Nav.Link>
                 <Nav.Link as={Link} to={"/"}> Logout</Nav.Link>
                 
             </Nav>
