@@ -17,7 +17,8 @@ This application is created in accordance with the problem statement provided by
    ![Admin Dash 2](https://github.com/cfgblr2023/Team-25/assets/70397438/459028af-d577-4151-9ef1-9fe251cd2577)
    ![mentor Dashboard](https://github.com/cfgblr2023/Team-25/assets/70397438/7606eb44-cc2a-4a0c-bcae-0efc8eb50dcd)
    ![Mentee Dashboard](https://github.com/cfgblr2023/Team-25/assets/70397438/a6de2b92-fccc-4455-a4be-f27b58ad0363)
-   ![Mentee Dash2](https://github.com/cfgblr2023/Team-25/assets/70397438/34a3f372-5343-428e-915f-4fb72e00e962)
+   ![Mentee Dash2](https://github.com/cfgblr2023/Team-25/assets/70397438/db342195-a0fc-422e-bbbe-1dccd06a45e1)
+
       
 ## Installation
 
