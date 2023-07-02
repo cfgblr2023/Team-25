@@ -10,30 +10,6 @@ Router.post("/module", async (req, res) => {
   try {
     const newModule = await Module.create({ ...req.body });
 
-<<<<<<< HEAD
-    return res
-      .status(200)
-      .json({
-        token,
-        module: newModule,
-        success: true,
-        message: "Module created Successfully",
-      });
-  } catch (error) {
-    return res.status(500).json({ message: error.message, success: false });
-  }
-});
-Router.delete("/module/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const del = await Module.findByIdAndDelete(id);
-    return res
-      .statusCode(200)
-      .json({ success: true, message: "Module deleted Successfully" });
-  } catch (error) {
-    return res.status(500).json({ message: error.message, success: false });
-  }
-=======
 
         return res.status(200).json({  module: newModule, success: true, message: "Module created Successfully" });
     } catch (error) {
@@ -49,7 +25,6 @@ Router.delete('/module/:id', async (req, res) => {
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
     }
->>>>>>> d26e50219ea1e43bd9377d8e762dda41a3eb6670
 });
 
 Router.post("/session/:moduleId", async (req, res) => {
