@@ -19,6 +19,7 @@ export const servicePost = async (path, payload, headers = null) => {
 };
 
 export const serviceGet = async (path, headers) => {
+    console.log(headers);
     return new Promise((resolve, reject) => {
         axios
             .get(`http://localhost:4000${path}`, {

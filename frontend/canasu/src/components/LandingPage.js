@@ -2,8 +2,7 @@ import React from "react";
 import "../styles/landingPage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router";
-import Smile from "@mui/icons-material/SentimentSatisfiedAlt";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -15,8 +14,10 @@ export default function LandingPage() {
   return (
     <>
       <img
-        src="https://static.wixstatic.com/media/1dd121_b983359cada04e6cb9b14506edf0da3b~mv2.png/v1/fill/w_440,h_236,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Main%20Logo.png"
+        src="./assets/nanasuu.png"
         alt="Canasu Main Logo"
+        width="50%"
+        height="50%"
       ></img>
       <div
         className="container-fluid d-flex ms-0 flex-column justify-content-center align-items-center overflow-auto"

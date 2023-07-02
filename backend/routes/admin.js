@@ -5,44 +5,41 @@ const MentorModel = require("../database/schema/Mentor");
 const BatchModel = require("../database/schema/Batch");
 const ses = require("../services/aws");
 const Module = require("../database/schema/Module");
-const AdminModel = require("../database/schema/admin");
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken')
+const ResourcesModel = require("../database/schema/resources");
+
 const Router = express.Router();
 
 //add mentees
 
-Router.post("/add/mentee", async (req, res) => {
-  try {
-    const { students } = req.body;
-    for (i in students) {
-      const { email, name, language } = students[i];
-      var student = await MenteeModel.findOne({ email });
-      const mentor = await MentorModel.findOne({
-        language,
-        status: "available",
-      });
-      if (!student) {
-        student = await MenteeModel.create({
-          name,
-          email,
-          password: "random",
-          language,
-        });
-      }
-      await MentorModel.findByIdAndUpdate(mentor._id, {
-        $set: {
-          status: "assigned",
-        },
-      });
-      const batch = await BatchModel.create({
-        mentor: mentor._id,
-        mentee: student._id,
-      });
-      const token = jwt.sign(
-        { id: student._id.toString(), email: student.email },
-        "forget-pass",
-        { expiresIn: "10m" }
-      );
+Router.post('/add/mentee', async (req, res) => {
+    try {
+        const { students } = req.body;
+        for (i in students) {
+            const { email, name, language } = students[i];
+            var student = await MenteeModel.findOne({ email });
+            const mentor = await MentorModel.findOne({ language, status: 'available' });
+            if(!mentor){
+                return res.status(200).json({success:false, message:'No mentor available for now'})
+            }
+            if (!student) {
+                student = await MenteeModel.create({
+                    name,
+                    email,
+                    password: "random",
+                    language
+                });
+            }
+            await MentorModel.findByIdAndUpdate(mentor._id, {
+                $set: {
+                    status: "assigned"
+                }
+            })
+            const batch = await BatchModel.create({
+                mentor: mentor._id,
+                mentee: student._id
+            })
+            const token = jwt.sign({ id: student._id.toString(), email: student.email }, 'forget-pass', { expiresIn: "10m" });
 
       await ses.sendEmail(
         {
@@ -80,6 +77,7 @@ Router.post("/add/mentee", async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 Router.get("/mentor", async (req, res) => {
   try {
     const mentors = await MentorModel.find({});
@@ -117,11 +115,49 @@ Router.put("/batch/mentor", async (req, res) => {
   } catch (error) {
     return res.status(500).json({ message: error.message, success: false });
   }
+=======
+
+Router.get('/mentor', async (req, res) => {
+    try {
+        const mentors = await MentorModel.find({});
+        return res.status(200).json({ message: "Fetched all mentore", mentors, success });
+    } catch (error) {
+        return res.status(500).json({ message: error.message, success: false });
+    }
+});
+Router.put('/mentor/:id', async (req, res) => {
+    try {
+        const {id} = req.params;
+        const mentor = await MentorModel.findByIdAndUpdate(id,{
+            $set:{
+                status:"available"
+            }
+        });
+        return res.status(200).json({ message: "updated all mentor", mentor, success });
+    } catch (error) {
+        return res.status(500).json({ message: error.message, success: false });
+    }
+});
+Router.put('/batch/mentor', async (req, res) => {
+    try {
+        const { batchId, mentorId } = req.query;
+        const batch = await BatchModel.findByIdAndUpdate(batchId, {
+            $set: {
+                mentor: mentorId
+            }
+        });
+        return res.status(200).json({ success: true, batch });
+    } catch (error) {
+        return res.status(500).json({ message: error.message, success: false });
+
+    }
+>>>>>>> d26e50219ea1e43bd9377d8e762dda41a3eb6670
 });
 Router.post("/module", async (req, res) => {
   try {
     const newModule = await Module.create({ ...req.body });
 
+<<<<<<< HEAD
     return res
       .status(200)
       .json({
@@ -144,12 +180,30 @@ Router.delete("/module/:id", async (req, res) => {
   } catch (error) {
     return res.status(500).json({ message: error.message, success: false });
   }
+=======
+
+        return res.status(200).json({  module: newModule, success: true, message: "Module created Successfully" });
+    } catch (error) {
+        return res.status(500).json({ message: error.message, success: false });
+
+    }
+});
+Router.delete('/module/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const del = await Module.findByIdAndDelete(id);
+        return res.status(200).json({ success: true, message: "Module deleted Successfully" })
+    } catch (error) {
+        return res.status(500).json({ message: error.message, success: false });
+    }
+>>>>>>> d26e50219ea1e43bd9377d8e762dda41a3eb6670
 });
 
 Router.post("/add-admin", async (req, res) => {
   try {
     const newAdmin = await Admin.create({ ...req.body });
 
+<<<<<<< HEAD
     return res
       .status(200)
       .json({
@@ -173,6 +227,24 @@ Router.delete("/add-admin/:id", async (req, res) => {
   } catch (error) {
     return res.status(500).json({ message: error.message, success: false });
   }
+=======
+
+        return res.status(200).json({ admin: newAdmin, success: true, message: "Admin added Successfully" });
+    } catch (error) {
+        return res.status(500).json({ message: error.message, success: false });
+
+    }
+});
+
+Router.delete('/add-admin/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const del = await Admin.findByIdAndDelete(id);
+        return res.status(200).json({ success: true, message: "Admin deleted Successfully" })
+    } catch (error) {
+        return res.status(500).json({ message: error.message, success: false });
+    }
+>>>>>>> d26e50219ea1e43bd9377d8e762dda41a3eb6670
 });
 
 Router.get("/batch", async (req, res) => {
@@ -235,6 +307,7 @@ Router.get("/batch/:id", async (req, res) => {
       },
     ]);
 
+<<<<<<< HEAD
     return res
       .status(200)
       .json({
@@ -246,6 +319,13 @@ Router.get("/batch/:id", async (req, res) => {
   } catch (error) {
     return res.status(500).json({ message: error.message, success: false });
   }
+=======
+        return res.status(200).json({  batch, success: true, message: "Batch fetched Successfully" });
+    } catch (error) {
+        return res.status(500).json({ message: error.message, success: false });
+
+    }
+>>>>>>> d26e50219ea1e43bd9377d8e762dda41a3eb6670
 });
 
 Router.get("/feedback/:batchId", async (req, res) => {
@@ -253,6 +333,7 @@ Router.get("/feedback/:batchId", async (req, res) => {
     const { batchId } = req.params;
     const newFeedback = await FeedbackModel.findById(batchId);
 
+<<<<<<< HEAD
     return res
       .status(200)
       .json({
@@ -267,3 +348,39 @@ Router.get("/feedback/:batchId", async (req, res) => {
 });
 
 module.exports = Router;
+=======
+        return res.status(200).json({ admin: newAdmin, success: true, message: "Feedback received Successfully" });
+    } catch (error) {
+        return res.status(500).json({ message: error.message, success: false });
+
+    }
+});
+
+
+
+            Router.post('/resources',async(req, res)=>{
+                try {
+                    const newResources = await ResourcesModel.create({...req.body});
+                
+                
+                      return res.status(200).json({  resource: newResources, success: true , message:"Resources added Successfully"});
+                } catch (error) {
+                    return res.status(500).json({ message: error.message, success: false });
+                    
+                }
+                });
+
+                Router.get('/resources/:Id',async(req, res)=>{
+                    try {
+                        const {Id} = req.params;
+                        const newResources= await ResourcesModel.findById(Id);
+                    
+                          return res.status(200).json({  resource: newResources, success: true , message:"Resources fetched Successfully"});
+                    } catch (error) {
+                        return res.status(500).json({ message: error.message, success: false });
+                        
+                    }
+                    });
+
+module.exports = Router; 
+>>>>>>> d26e50219ea1e43bd9377d8e762dda41a3eb6670
