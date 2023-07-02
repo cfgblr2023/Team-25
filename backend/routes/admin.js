@@ -12,7 +12,7 @@ const SessionsModel = require("../database/schema/sessions");
 
 const Router = express.Router();
 
-//add mentees 
+//add mentees
 
 Router.post('/add/mentee', async (req, res) => {
     try {
@@ -43,35 +43,40 @@ Router.post('/add/mentee', async (req, res) => {
             })
             const token = jwt.sign({ id: student._id.toString(), email: student.email }, 'forget-pass', { expiresIn: "10m" });
 
-            await ses.sendEmail({
-                Destination: {
-                    ToAddresses: [email],
-                },
-                Message: {
-                    Body: {
-                        Html: {
-                            Data: `forget pass link : localhost:3000/auth/reset/${token}`
-                        },
-                    },
-                    Subject: {
-                        Charset: 'UTF-8',
-                        Data: 'Reset password link',
-                    },
-                },
-                ReplyToAddresses: [],
-                Source: 'samarth <samarthsingh890.ss@gmail.com>',
-            }, function (err, data) {
-                if (err) {
-                    console.log(err);
-                    throw new Error(err);
-                } else console.log(data);
-            });
+      await ses.sendEmail(
+        {
+          Destination: {
+            ToAddresses: [email],
+          },
+          Message: {
+            Body: {
+              Html: {
+                Data: `forget pass link : localhost:3000/auth/reset/${token}`,
+              },
+            },
+            Subject: {
+              Charset: "UTF-8",
+              Data: "Reset password link",
+            },
+          },
+          ReplyToAddresses: [],
+          Source: "samarth <samarthsingh890.ss@gmail.com>",
+        },
+        function (err, data) {
+          if (err) {
+            console.log(err);
+            throw new Error(err);
+          } else console.log(data);
         }
-        return res.status(200).json({message: "added students successfully", success: true});
-    } catch (error) {
-        console.log(error);
-        return res.status(500).json({ message: error.message, success: false });
+      );
     }
+    return res
+      .status(200)
+      .json({ message: "added students successfully", success: true });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: error.message, success: false });
+  }
 });
 
 
@@ -183,31 +188,35 @@ Router.delete('/add-admin/:id', async (req, res) => {
     }
 });
 
+Router.get("/batch", async (req, res) => {
+  try {
+    const batches = await BatchModel.find({}).populate("mentor mentee");
 
-Router.get('/batch', async (req, res) => {
-    try {
-        const batches = await BatchModel.find({}).populate('mentor mentee');
-
-
-        return res.status(200).json({ batches, success: true, message: "Batches fetched Successfully" });
-    } catch (error) {
-        return res.status(500).json({ message: error.message, success: false });
-
-    }
+    return res
+      .status(200)
+      .json({
+        batches,
+        success: true,
+        message: "Batches fetched Successfully",
+      });
+  } catch (error) {
+    return res.status(500).json({ message: error.message, success: false });
+  }
 });
 
-Router.get('/batch/:id', async (req, res) => {
-    try {
-        const { id } = req.params;
-        // const newBatch = await BatchModel.findById(id).populate("modules");
-        const [batch] = await BatchModel.aggregate([
-            {
-                $match: {
-                    $expr: {
-                        $eq: ['$_id', new mongoose.Types.ObjectId(id)],
-                    },
-                },
-            },
+Router.get("/batch/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    // const newBatch = await BatchModel.findById(id).populate("modules");
+    const [batch] = await BatchModel.aggregate([
+      {
+        $match: {
+          $expr: {
+            $eq: ["$_id", new mongoose.Types.ObjectId(id)],
+          },
+        },
+      },
+   
             {
                 $lookup: {
                     from: "modules",
@@ -262,10 +271,10 @@ Router.get('/batch/:id', async (req, res) => {
     }
 });
 
-Router.get('/feedback/:batchId', async (req, res) => {
-    try {
-        const { batchId } = req.params;
-        const newFeedback = await FeedbackModel.findById(batchId);
+Router.get("/feedback/:batchId", async (req, res) => {
+  try {
+    const { batchId } = req.params;
+    const newFeedback = await FeedbackModel.findById(batchId);
 
         return res.status(200).json({ admin: newAdmin, success: true, message: "Feedback received Successfully" });
     } catch (error) {

@@ -25,6 +25,8 @@ import ModulePage from "./mentor/ModulePage"
 import Modules_new from "./components/Modules_new";
 import FooterComp from "./components/FooterComp";
 import Add from "./admin/Add";
+import Chat from "./components/chat";
+import ViewAdmins from "./admin/ViewAdmins";
 
 
 function App() {
@@ -44,6 +46,7 @@ function App() {
                 <Route path="batches" element={<Batches/>}/>
                 <Route path="batch/:id" element={<Modules_new/>}/>
                 <Route path="add" element={<Add/>}/>
+                <Route path="viewAdmins" element={<ViewAdmins/>}/>
             </Route>
             
             {/* <Route path="/mentor" element={<ProtectedRoute><MentorWrapper /></ProtectedRoute>}> */}
@@ -60,6 +63,8 @@ function App() {
                 <Route path="dashboard" element={<MenteeDashboard/>}/>
                 <Route  element={<Navigate to="/student/batch/id"/>}/>
                 <Route path="batch/:id" element={<Modules_new/>}/>
+                <Route  element={<Navigate to="/student/chat"/>}/>
+                <Route path="chat" element={<Chat/>}/>
                 
             </Route>
 

@@ -3,12 +3,12 @@ import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react';
 import "../styles/chat.css"
 
-const API_KEY ="";
+const API_KEY = process.env.REACT_APP_KEY;
 export default function Chat() {
   const [typing,setTyping] = useState(false)
   const [messages, setMessages] = useState([
     {
-      message: "Hello, How can i Help you today?",
+      message: "Hello, How can I Help you today?",
       sentTime: "just now",
       sender: "ChatGPT"
     }

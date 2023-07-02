@@ -19,13 +19,18 @@ export default function NavComp(props) {
                 Login
               </Nav.Link> */}
               
-              <Nav.Link as={Link} to={"dashboard"}>
+              <Nav.Link as={Link} to={"/student/dashboard"}>
                 Batches
               </Nav.Link>
               {/* <Nav.Link as={Link} to={"/contact"}>Contact</Nav.Link> */}
-              <Nav.Link as={Link} to={"/upcomming"}>
+              <Nav.Link as={Link} to={"/student/upcomming"}>
                 Upcomming Sessions
               </Nav.Link>
+              {props.branch==="student" && 
+                <Nav.Link as={Link} to={"/student/chat"}>
+                AI Chat
+              </Nav.Link>
+              }
               
               
             </Nav>
