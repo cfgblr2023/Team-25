@@ -11,7 +11,7 @@ export default function NavComp(props) {
     <div>
       <Navbar expand="lg" className="navbar navbar-expand-lg navbar-dark bg-dark">
         <Container>
-          <Navbar.Brand href="/">CANASU</Navbar.Brand>
+          <Navbar.Brand href="/">NANASU WAY</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
