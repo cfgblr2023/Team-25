@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import "../styles/Modules_new.css";
+import AddModule from "./AddModule";
 export default function Modules_new() {
+    const[toggleModal,setToggleModal]= useState(false);
   const module_data = [
     {
       id: 0,
@@ -36,7 +38,14 @@ export default function Modules_new() {
       link: "link",
     },
   ];
+
+  const handleAddModule = () =>{
+    setToggleModal(!toggleModal)
+
+  }
   return (
+    <>
+    {toggleModal? <AddModule handleAddModule={handleAddModule}/> : 
     <>
         <div className=" d-flex  justify-content-center mt-5 ">
       <Accordion className="w-50" defaultActiveKey="0">
@@ -60,7 +69,11 @@ export default function Modules_new() {
       </Accordion>
       
     </div>
-    <button className="Module-addModule mt-5">Add Course</button>
+    <button className="Module-addModule mt-5" onClick={handleAddModule}>Add Module</button>
+    </>
+    
+    }
+        
     </>
     
   );
