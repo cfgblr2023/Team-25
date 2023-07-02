@@ -12,7 +12,7 @@
 1. Start the backend server: `npm run start`
 2. The server will be running on `http://localhost:4000`.
 3. Create the .env file in backend folder with the following content:
-    ```MONGO_URL = <your mongo connection url>
+```MONGO_URL = <your mongo connection url>
 JWT_TOKEN = your jwt_token
 AWS_ACCESS_KEY = your aws access key
 AWS_SECRET_KEY = your aws secret key```
