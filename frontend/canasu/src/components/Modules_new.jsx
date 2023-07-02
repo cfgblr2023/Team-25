@@ -3,7 +3,7 @@ import Accordion from "react-bootstrap/Accordion";
 import "../styles/Modules_new.css";
 import AddModule from "./AddModule";
 import AddSession from "./AddSession";
-export default function Modules_new() {
+export default function Modules_new(props) {
     const[toggleModal,setToggleModal]= useState(false);
     const[toggleSession,setToggleSession]= useState(false);
   const module_data = [
@@ -68,11 +68,15 @@ export default function Modules_new() {
                         <div className="Module-field desc mt-2"><span>Start Date :</span>{module.startDate} </div>
                         <div className="Module-field desc mt-2"><span>End Date :</span> {module.endDate}</div>
                         <div className="Module-field desc mt-2"><span>Link:</span>{module.link} </div>
-                        <div className="d-flex justify-content-between">
-      
-                        <button className="Module-deleteModule" onClick={handleAddSession}>Add Session</button>
-                        <button className="Module-deleteModule">Delete</button>
-                        </div>
+                        
+                        {props.branch !== "mentee" && 
+                            <div className="d-flex justify-content-between">
+                            <button className="Module-deleteModule" onClick={handleAddSession}>Add Session</button>
+                            <button className="Module-deleteModule">Delete</button>
+                            </div>
+                        }
+                        
+                        
                       </div>
                       <div>
                         {toggleSession && <AddSession handleAddSession={handleAddSession}/>}
@@ -87,7 +91,10 @@ export default function Modules_new() {
       </Accordion>
       
     </div>
-    <button className="Module-addModule mt-5" onClick={handleAddModule}>Add Module</button>
+    {props.branch !== "mentee" &&
+        <button className="Module-addModule mt-5" onClick={handleAddModule}>Add Module</button>
+    }
+    
     </>
     
     }
