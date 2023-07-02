@@ -13,10 +13,10 @@
   align-items: center;
   padding: 50px 10px;
 }
-.batchHeading{
+.batchHeading {
   font-size: 40px;
   text-align: center;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   font-weight: 900;
   margin-top: 0;
 }
@@ -50,4 +50,15 @@
   width: 90%;
   font-family: "Courier New", Courier, monospace;
   font-weight: 900;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+.Batches{
+  width: 90%;
+}
+
+  .batchCards {
+    flex-basis: 100%;
+  }
 }
