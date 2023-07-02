@@ -22,7 +22,7 @@ import Batches from "./components/Batches";
 import MenteeDashboard from "./mentee/MenteeDashboard";
 import SignUp from "./mentor/SignUp"
 import ModulePage from "./mentor/ModulePage"
-import Modules_new from "./components/Modules_new";
+import Modules_new from "./mentor/Modules_new";
 import FooterComp from "./components/FooterComp";
 import Add from "./admin/Add";
 
@@ -50,8 +50,8 @@ function App() {
             <Route path="/mentor" element={<MentorWrapper />}>
               <Route index element={<Navigate to="/mentor/dashboard"/>}/>
                 <Route path="dashboard" element={<MentorDashboard/>}/>
-                <Route  element={<Navigate to="/mentor/batch/id"/>}/>
-                <Route path="batch/id" element={<Modules_new/>}/>
+                <Route  element={<Navigate to="/mentor/batch/:id"/>}/>
+                <Route path="batch/:id" element={<Modules_new/>}/>
             </Route>
 
             {/* <Route path="/student" element={<ProtectedRoute><MenteeWrapper /></ProtectedRoute>}> */}
@@ -59,7 +59,7 @@ function App() {
               <Route index element={<Navigate to="/student/dashboard"/>}/>
                 <Route path="dashboard" element={<MenteeDashboard/>}/>
                 <Route  element={<Navigate to="/student/batch/id"/>}/>
-                <Route path="batch/id" element={<Modules_new/>}/>
+                <Route path="batch/:id" element={<Modules_new/>}/>
                 
             </Route>
 

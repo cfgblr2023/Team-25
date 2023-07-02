@@ -3,7 +3,7 @@ const Module = require("../database/schema/Module");
 const SessionsModel = require("../database/schema/sessions");
 const MenteeModel = require("../database/schema/Mentee");
 const BatchModel = require("../database/schema/Batch");
-const verifyMentor = require("../middleware/verifyMentee");
+const verifyMentor = require("../middleware/verifyMentor");
 const Router = express.Router();
 
 Router.post('/module', async (req, res) => {
