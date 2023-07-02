@@ -2,7 +2,8 @@ import React from 'react'
 import "../styles/footer.css"
 export default function FooterComp() {
   return (
-    <div className='footer'>
+    <div className='footer mt-5
+    '>
       <div className='sb__footer section__padding'>
         <div className='sb__footer-links'>
             <div className='sb__footer-links_div'>
