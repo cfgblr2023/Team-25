@@ -3,9 +3,8 @@
 ## Installation
 
 1. Make sure you have [Node.js](https://nodejs.org) installed.
-2. Clone this repository: `git clone https://github.com/your-username/react-website.git`
-3. Navigate to the project directory: `cd react-website`
-4. Install the dependencies: `npm install`
+2. Clone this repository.
+3. Install the dependencies: `npm install`
 
 ## Usage
 
