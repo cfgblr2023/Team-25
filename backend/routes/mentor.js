@@ -6,10 +6,34 @@ const BatchModel = require("../database/schema/Batch");
 const verifyMentor = require("../middleware/verifyMentee");
 const Router = express.Router();
 
-Router.post('/module', async (req, res) => {
-    try {
-        const newModule = await Module.create({ ...req.body });
+Router.post("/module", async (req, res) => {
+  try {
+    const newModule = await Module.create({ ...req.body });
 
+<<<<<<< HEAD
+    return res
+      .status(200)
+      .json({
+        token,
+        module: newModule,
+        success: true,
+        message: "Module created Successfully",
+      });
+  } catch (error) {
+    return res.status(500).json({ message: error.message, success: false });
+  }
+});
+Router.delete("/module/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const del = await Module.findByIdAndDelete(id);
+    return res
+      .statusCode(200)
+      .json({ success: true, message: "Module deleted Successfully" });
+  } catch (error) {
+    return res.status(500).json({ message: error.message, success: false });
+  }
+=======
 
         return res.status(200).json({  module: newModule, success: true, message: "Module created Successfully" });
     } catch (error) {
@@ -25,20 +49,25 @@ Router.delete('/module/:id', async (req, res) => {
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
     }
+>>>>>>> d26e50219ea1e43bd9377d8e762dda41a3eb6670
 });
 
-Router.post('/session/:moduleId', async (req, res) => {
-    try {
-        const {moduleId} = req.params;
-        const newSession = await SessionsModel.create({ ...req.body });
-        await Module.findByIdAndUpdate(moduleId,{
-           $push:{
-            session:newSession._id
-           }
-        },{
-            new: true,
-            upsert: true
-        })
+Router.post("/session/:moduleId", async (req, res) => {
+  try {
+    const { moduleId } = req.params;
+    const newSession = await SessionsModel.create({ ...req.body });
+    await Module.findByIdAndUpdate(
+      moduleId,
+      {
+        $push: {
+          session: newSession._id,
+        },
+      },
+      {
+        new: true,
+        upsert: true,
+      }
+    );
 
 
         return res.status(200).json({  session: newSession, success: true, message: "Session created Successfully" });
@@ -57,49 +86,49 @@ Router.delete('/session/:id', async (req, res) => {
     }
 });
 
-Router.get('/batch/:id', async (req, res) => {
-    try {
-        const { id } = req.params;
-        // const batch = await BatchModel.findById(id).populate("Modules");
-        const [batch] = await BatchModel.aggregate([
+Router.get("/batch/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    // const batch = await BatchModel.findById(id).populate("Modules");
+    const [batch] = await BatchModel.aggregate([
+      {
+        $match: {
+          $expr: {
+            $eq: ["$_id", toObjectId(id)],
+          },
+        },
+      },
+      {
+        $lookup: {
+          from: "modules",
+          let: { modules: "$modules" },
+          pipeline: [
             {
-                $match: {
-                    $expr: {
-                        $eq: ['$_id', toObjectId(id)],
-                    },
+              $match: {
+                $expr: {
+                  $eq: ["$_id", "$$modules"],
                 },
+              },
             },
             {
-                $lookup: {
-                    from: "modules",
-                    let: { modules: '$modules' },
-                    pipeline: [
-                        {
-                            $match: {
-                                $expr: {
-                                    $eq: ['$_id', '$$modules'],
-                                },
-                            },
-                        },
-                        {
-                            $lookup: {
-                                from: "sessions",
-                                let: { sessions: '$sessions' },
-                                pipeline: [
-                                    {
-                                        $match: {
-                                            $expr: {
-                                                $eq: ['$_id', '$$sessions'],
-                                            },
-                                        },
-                                    }
-                                ]
-                            }
-                        }
-                    ]
-                }
-            }
-        ]);
+              $lookup: {
+                from: "sessions",
+                let: { sessions: "$sessions" },
+                pipeline: [
+                  {
+                    $match: {
+                      $expr: {
+                        $eq: ["$_id", "$$sessions"],
+                      },
+                    },
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+    ]);
 
 
         return res.status(200).json({  batch: batch, success: true, message: "Batch fetched Successfully" });
@@ -135,17 +164,21 @@ Router.get('/mentee/:menteeId', async (req, res) => {
     }
 });
 
-Router.put('/progress/:moduleId', async (req, res) => {
-    try {
-        const { moduleId } = req.params
-        const module = await Module.findByIdAndUpdate(moduleId, {
-            $set: {
-                progress: 1
-            }
-        }, {
-            new: true,
-            upsert: true
-        });
+Router.put("/progress/:moduleId", async (req, res) => {
+  try {
+    const { moduleId } = req.params;
+    const module = await Module.findByIdAndUpdate(
+      moduleId,
+      {
+        $set: {
+          progress: 1,
+        },
+      },
+      {
+        new: true,
+        upsert: true,
+      }
+    );
 
 
         return res.status(200).json({  module: module, success: true, message: "modules fetched Successfully" });
@@ -159,13 +192,13 @@ Router.put('/progress/:moduleId', async (req, res) => {
 
 //mentee APIs
 
-Router.get('/upcoming', async (req,res)=>{
-    try {
-        return res.json({});
-    } catch (error) {
-        console.log(error);
-        return res.status(500)
-    }
+Router.get("/upcoming", async (req, res) => {
+  try {
+    return res.json({});
+  } catch (error) {
+    console.log(error);
+    return res.status(500);
+  }
 });
 
 
