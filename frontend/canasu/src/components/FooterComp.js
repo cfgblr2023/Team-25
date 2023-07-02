@@ -5,7 +5,7 @@ export default function FooterComp() {
     <div className='footer mt-5
     '>
       <div className='sb__footer section__padding'>
-        <div className='sb__footer-links'>
+        {/* <div className='sb__footer-links'>
             <div className='sb__footer-links_div'>
                 <h4>For Business</h4>
                 <a href='/'>
@@ -61,7 +61,7 @@ export default function FooterComp() {
                     <p><i className="fa-brands fa-twitter"></i></p>
                 </div>
             </div>
-        </div>
+        </div> */}
 
         <hr></hr>
 
