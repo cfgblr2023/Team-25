@@ -8,7 +8,7 @@ export default function Chat() {
   const [typing,setTyping] = useState(false)
   const [messages, setMessages] = useState([
     {
-      message: "Hello, How can i Help you today?",
+      message: "Hello, How can I Help you today?",
       sentTime: "just now",
       sender: "ChatGPT"
     }

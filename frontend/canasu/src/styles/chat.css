@@ -4,7 +4,7 @@
     align-items: center;
     padding-top: 100px;
     padding-bottom: 100px;
-    background-color: rgb(211, 224, 185);
+    /* background-color: rgb(211, 224, 185); */
 }
 .chat--div{
     position: relative;

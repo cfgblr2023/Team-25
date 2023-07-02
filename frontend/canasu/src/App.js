@@ -25,6 +25,7 @@ import ModulePage from "./mentor/ModulePage"
 import Modules_new from "./components/Modules_new";
 import FooterComp from "./components/FooterComp";
 import Add from "./admin/Add";
+import Chat from "./components/chat";
 
 
 function App() {
@@ -60,6 +61,8 @@ function App() {
                 <Route path="dashboard" element={<MenteeDashboard/>}/>
                 <Route  element={<Navigate to="/student/batch/id"/>}/>
                 <Route path="batch/id" element={<Modules_new/>}/>
+                <Route  element={<Navigate to="/student/chat"/>}/>
+                <Route path="chat" element={<Chat/>}/>
                 
             </Route>
 
