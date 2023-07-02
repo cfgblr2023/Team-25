@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/landingPage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -132,7 +132,7 @@ export default function LandingPage() {
         <img src="/assets/imgIcon.svg" alt="" height="250px" />
       </div>
 
-      <footer class="text-muted py-2 bg-secondary">
+      {/* <footer class="text-muted py-2 bg-secondary">
         <div className="container-fluid">
           <p className="float-end mb-1">
             <a href="#" className="text-light">
@@ -141,7 +141,7 @@ export default function LandingPage() {
           </p>
           <p className="mb-1 text-light">©2023 by Canasu Dream Foundation</p>
         </div>
-      </footer>
+      </footer> */}
     </>
   );
 }

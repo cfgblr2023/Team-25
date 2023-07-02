@@ -6,7 +6,7 @@ import ModuleCard from "./ModuleCard";
 const ModulePage = () => {
   return (
     <>
-      <NavComp />
+      
       <div className="moduleContainer">
         <h1>Modules</h1>
         <ModuleCard />

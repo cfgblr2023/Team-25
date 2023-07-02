@@ -11,7 +11,7 @@ export default function NavCompAdmin() {
     <div>
       <Navbar expand="lg" className="navbar navbar-expand-lg navbar-dark bg-dark">
         <Container>
-          <Navbar.Brand href="/">APP</Navbar.Brand>
+          <Navbar.Brand href="/">NANASU WAY</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -32,8 +32,8 @@ export default function NavCompAdmin() {
             <Nav className="ml-auto">
                 
                 {/* <Nav.Link onClick={()=>updateParentState({})}>Logout</Nav.Link> */}
-
-                <Nav.Link as={Link} to={"/logout"}> Logout</Nav.Link>
+                <Nav.Link as={Link} to={"batch"}>Hello Admin</Nav.Link>
+                <Nav.Link as={Link} to={"/"}> Logout</Nav.Link>
                 
             </Nav>
           </Navbar.Collapse>

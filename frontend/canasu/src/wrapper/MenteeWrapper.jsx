@@ -5,7 +5,7 @@ export default function MenteeWrapper() {
   return (
     
     <>
-        
+        <NavComp branch={"student"}/>
         <Outlet/>
     </>
   )

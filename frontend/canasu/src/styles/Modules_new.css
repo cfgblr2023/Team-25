@@ -1,0 +1,35 @@
+.Module-field{
+    font-weight: bolder;
+  margin: 3px;
+  text-align: left;
+  font-family: "Courier New", Courier, monospace;
+  padding: 30px;
+}
+.Module-field>span{
+    color: rgb(47, 136, 145);
+    font-size: 20px;
+}
+.desc{
+   padding:10px;
+   background-color: rgb(237, 232, 227);
+   border-radius: 15px;
+
+}
+.Module-deleteModule {
+    background-color: rgb(208, 181, 155);
+    padding: 10px;
+    width: max-content;
+    border-radius: 12px;
+    margin: 10px;
+  }
+  .Module-addModule {
+    background-color: rgb(65, 204, 217);
+    border: 3px solid rgb(14, 233, 182);
+    padding: 10px;
+    width: max-content;
+    border-radius: 12px;
+    margin: 20px;
+    font-weight: 900;
+    /* margin: auto; */
+    padding: 10px 50px;
+  }

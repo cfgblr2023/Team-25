@@ -77,45 +77,6 @@ Router.post('/add/mentee', async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-Router.get("/mentor", async (req, res) => {
-  try {
-    const mentors = await MentorModel.find({});
-    return res
-      .statusCode(200)
-      .json({ message: "Fetched all mentore", mentors, success });
-  } catch (error) {
-    return res.status(500).json({ message: error.message, success: false });
-  }
-});
-Router.put("/mentor/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const mentor = await MentorModel.findByIdAndUpdate(id, {
-      $set: {
-        status: "available",
-      },
-    });
-    return res
-      .statusCode(200)
-      .json({ message: "updated all mentor", mentor, success });
-  } catch (error) {
-    return res.status(500).json({ message: error.message, success: false });
-  }
-});
-Router.put("/batch/mentor", async (req, res) => {
-  try {
-    const { batchId, mentorId } = req.query;
-    const batch = await BatchModel.findByIdAndUpdate(batchId, {
-      $set: {
-        mentor: mentorId,
-      },
-    });
-    return res.statusCode(200).json({ success: true, batch });
-  } catch (error) {
-    return res.status(500).json({ message: error.message, success: false });
-  }
-=======
 
 Router.get('/mentor', async (req, res) => {
     try {
@@ -151,36 +112,11 @@ Router.put('/batch/mentor', async (req, res) => {
         return res.status(500).json({ message: error.message, success: false });
 
     }
->>>>>>> d26e50219ea1e43bd9377d8e762dda41a3eb6670
 });
 Router.post("/module", async (req, res) => {
   try {
     const newModule = await Module.create({ ...req.body });
 
-<<<<<<< HEAD
-    return res
-      .status(200)
-      .json({
-        token,
-        module: newModule,
-        success: true,
-        message: "Module created Successfully",
-      });
-  } catch (error) {
-    return res.status(500).json({ message: error.message, success: false });
-  }
-});
-Router.delete("/module/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const del = await Module.findByIdAndDelete(id);
-    return res
-      .statusCode(200)
-      .json({ success: true, message: "Module deleted Successfully" });
-  } catch (error) {
-    return res.status(500).json({ message: error.message, success: false });
-  }
-=======
 
         return res.status(200).json({  module: newModule, success: true, message: "Module created Successfully" });
     } catch (error) {
@@ -196,38 +132,12 @@ Router.delete('/module/:id', async (req, res) => {
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
     }
->>>>>>> d26e50219ea1e43bd9377d8e762dda41a3eb6670
 });
 
 Router.post("/add-admin", async (req, res) => {
   try {
     const newAdmin = await Admin.create({ ...req.body });
 
-<<<<<<< HEAD
-    return res
-      .status(200)
-      .json({
-        token,
-        admin: newAdmin,
-        success: true,
-        message: "Admin added Successfully",
-      });
-  } catch (error) {
-    return res.status(500).json({ message: error.message, success: false });
-  }
-});
-
-Router.delete("/add-admin/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const del = await Admin.findByIdAndDelete(id);
-    return res
-      .statusCode(200)
-      .json({ success: true, message: "Admin deleted Successfully" });
-  } catch (error) {
-    return res.status(500).json({ message: error.message, success: false });
-  }
-=======
 
         return res.status(200).json({ admin: newAdmin, success: true, message: "Admin added Successfully" });
     } catch (error) {
@@ -244,7 +154,6 @@ Router.delete('/add-admin/:id', async (req, res) => {
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
     }
->>>>>>> d26e50219ea1e43bd9377d8e762dda41a3eb6670
 });
 
 Router.get("/batch", async (req, res) => {
@@ -307,25 +216,11 @@ Router.get("/batch/:id", async (req, res) => {
       },
     ]);
 
-<<<<<<< HEAD
-    return res
-      .status(200)
-      .json({
-        token,
-        batch,
-        success: true,
-        message: "Batch fetched Successfully",
-      });
-  } catch (error) {
-    return res.status(500).json({ message: error.message, success: false });
-  }
-=======
         return res.status(200).json({  batch, success: true, message: "Batch fetched Successfully" });
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
 
     }
->>>>>>> d26e50219ea1e43bd9377d8e762dda41a3eb6670
 });
 
 Router.get("/feedback/:batchId", async (req, res) => {
@@ -333,22 +228,6 @@ Router.get("/feedback/:batchId", async (req, res) => {
     const { batchId } = req.params;
     const newFeedback = await FeedbackModel.findById(batchId);
 
-<<<<<<< HEAD
-    return res
-      .status(200)
-      .json({
-        token,
-        admin: newAdmin,
-        success: true,
-        message: "Feedback received Successfully",
-      });
-  } catch (error) {
-    return res.status(500).json({ message: error.message, success: false });
-  }
-});
-
-module.exports = Router;
-=======
         return res.status(200).json({ admin: newAdmin, success: true, message: "Feedback received Successfully" });
     } catch (error) {
         return res.status(500).json({ message: error.message, success: false });
@@ -383,4 +262,3 @@ module.exports = Router;
                     });
 
 module.exports = Router; 
->>>>>>> d26e50219ea1e43bd9377d8e762dda41a3eb6670
