@@ -3,7 +3,7 @@
 ## Installation
 
 1. Make sure you have [Node.js](https://nodejs.org) installed.
-2. Clone this repository.
+2. Clone this repository : `https://github.com/cfgblr2023/Team-25.git`
 3. Install the dependencies: `npm install`
 
 
@@ -18,7 +18,7 @@
  1. Type:`npm start`
  2. Open your browser and visit `http://localhost:3000` to view the website.
 
-##Key Features
+## Key Features
 1. Automated mentor-mentee mapping.
 2. Empowers mentees to provide valuable feedback on their mentors.
 3. Provides authentication and authorization.
@@ -27,7 +27,7 @@
 6. Learning modules can be added by both admin and mentor.
 
 
-##Team 25
+## Team 25
 1. Samarth Singh
 2. Anushka Paliwal
 3. Alisha Kushwaha
