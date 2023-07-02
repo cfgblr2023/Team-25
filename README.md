@@ -10,9 +10,11 @@ This application is created in accordance with the problem statement provided by
    ![chat](https://github.com/cfgblr2023/Team-25/assets/70397438/9da2d870-946c-4918-9a5b-a29f754ac93a)
    
 4. Authentication & Registration
-   ![mentee](https://github.com/cfgblr2023/Team-25/assets/70397438/f5c01772-2458-4f23-95cc-947fa9e7ad33)
+   ![Login](https://github.com/cfgblr2023/Team-25/assets/70397438/f5c01772-2458-4f23-95cc-947fa9e7ad33)
+   ![sign up](https://github.com/cfgblr2023/Team-25/assets/70397438/21b67df7-1855-43df-8ba2-d0a586fc0696)
 
-5. Dashboards- Person-In-Charge, Mentor and Mentee
+
+6. Dashboards- Person-In-Charge, Mentor and Mentee
    ![Person-in-charge Dashboard](https://github.com/cfgblr2023/Team-25/assets/70397438/2f97795c-5d39-4a6d-80da-549f8a01ba60)
    ![Admin Dash 2](https://github.com/cfgblr2023/Team-25/assets/70397438/459028af-d577-4151-9ef1-9fe251cd2577)
    ![mentor Dashboard](https://github.com/cfgblr2023/Team-25/assets/70397438/7606eb44-cc2a-4a0c-bcae-0efc8eb50dcd)
