@@ -3,7 +3,7 @@ import "../styles/landingPage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-
+import NavcompLanding from "./NavCompLanding";
 export default function LandingPage() {
   const navigate = useNavigate();
 
@@ -13,12 +13,8 @@ export default function LandingPage() {
 
   return (
     <>
-      <img
-        src="./assets/nanasuu.png"
-        alt="Canasu Main Logo"
-        width="50%"
-        height="50%"
-      ></img>
+    <NavcompLanding/>
+     
       <div
         className="container-fluid d-flex ms-0 flex-column justify-content-center align-items-center overflow-auto"
         id="landingPageContainer1"

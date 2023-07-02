@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Login from "./Login";
 import "../styles/Tabs.css";
+import NavComp from "./NavCompLanding";
 
 function Tabs(props) {
   const [toggleState, setToggleState] = useState(3);
@@ -10,6 +11,9 @@ function Tabs(props) {
   };
 
   return (
+    <>
+     <NavComp/>
+
     <div className="tabsContainer">
       <div className="bloc-tabs">
         <button
@@ -58,6 +62,8 @@ function Tabs(props) {
         </div>
       </div>
     </div>
+    </>
+
   );
 }
 

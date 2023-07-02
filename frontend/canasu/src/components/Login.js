@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css";
 import { servicePost } from "../utils/api";
 import { toast } from "react-hot-toast";
+import NavComp from "./NavCompLanding";
 
 export default function Login({type}) {
 
@@ -39,6 +40,7 @@ export default function Login({type}) {
     }
 }
   return (
+    <>
     <div className="loginWrapper">
       <div className="login ">
         {/* {console.log(user)} */}
@@ -61,5 +63,7 @@ export default function Login({type}) {
        
       </div>
     </div>
+    </>
+
   );
 }
