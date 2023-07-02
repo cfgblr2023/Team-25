@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import "../styles/Modules_new.css";
 import AddModule from "./AddModule";
+import AddSession from "./AddSession";
 export default function Modules_new() {
     const[toggleModal,setToggleModal]= useState(false);
+    const[toggleSession,setToggleSession]= useState(false);
   const module_data = [
     {
       id: 0,
@@ -43,6 +45,10 @@ export default function Modules_new() {
     setToggleModal(!toggleModal)
 
   }
+  const handleAddSession = () =>{
+    setToggleSession(!toggleSession)
+
+  }
   return (
     <>
     {toggleModal? <AddModule handleAddModule={handleAddModule}/> : 
@@ -51,19 +57,31 @@ export default function Modules_new() {
       <Accordion className="w-50" defaultActiveKey="0">
         {module_data.map((module) => {
           return (
-            <Accordion.Item eventKey={module.id}>
-              <Accordion.Header>{module.name}</Accordion.Header>
-              <Accordion.Body>
-                <div className="moduleFields ">
-                  
-                  <div className="Module-field desc mt-2 "><span>Description</span> :{module.description} </div>
-                  <div className="Module-field desc mt-2"><span>Start Date :</span>{module.startDate} </div>
-                  <div className="Module-field desc mt-2"><span>End Date :</span> {module.endDate}</div>
-                  <div className="Module-field desc mt-2"><span>Link:</span>{module.link} </div>
-                  <button className="Module-deleteModule">Delete</button>
-                </div>
-              </Accordion.Body>
-            </Accordion.Item>
+            <>
+                
+                    <Accordion.Item eventKey={module.id}>
+                    <Accordion.Header>{module.name}</Accordion.Header>
+                    <Accordion.Body>
+                      <div className="moduleFields ">
+                        
+                        <div className="Module-field desc mt-2 "><span>Description</span> :{module.description} </div>
+                        <div className="Module-field desc mt-2"><span>Start Date :</span>{module.startDate} </div>
+                        <div className="Module-field desc mt-2"><span>End Date :</span> {module.endDate}</div>
+                        <div className="Module-field desc mt-2"><span>Link:</span>{module.link} </div>
+                        <div className="d-flex justify-content-between">
+      
+                        <button className="Module-deleteModule" onClick={handleAddSession}>Add Session</button>
+                        <button className="Module-deleteModule">Delete</button>
+                        </div>
+                      </div>
+                      <div>
+                        {toggleSession && <AddSession handleAddSession={handleAddSession}/>}
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                
+                
+            </>
           );
         })}
       </Accordion>

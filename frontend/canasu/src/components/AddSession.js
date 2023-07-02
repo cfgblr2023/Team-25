@@ -1,25 +1,30 @@
-import React from "react";
+import React from 'react'
+
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { MDBInput } from 'mdb-react-ui-kit';
-export default function AddModule(props) {
+export default function AddSession(props) {
   return (
     <div
       className="modal show"
       style={{ display: "block", position: "initial" }}
     >
       <Modal.Dialog>
-        <Modal.Header closeButton onClick={props.handleAddModule}>
-          <Modal.Title>Add Module</Modal.Title>
+        <Modal.Header closeButton onClick={props.handleAddSession}>
+          <Modal.Title>Add Session</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
             <div className="d-flex justify-content-between">
-            <h5>Name</h5>
+            <h5>Link</h5>
          <MDBInput  id='form1' type='text' />
             </div>
             <div className="d-flex justify-content-between">
-            <h5>Description</h5>
+            <h5>Start Date</h5>
+         <MDBInput  id='form1' type='text' />
+            </div>
+            <div className="d-flex justify-content-between">
+            <h5>End Date</h5>
          <MDBInput  id='form1' type='text' />
             </div>
           
@@ -27,11 +32,11 @@ export default function AddModule(props) {
 
         <Modal.Footer>
           {/* <Button variant="secondary">Close</Button> */}
-          <Button variant="primary" onClick={props.handleAddModule}>
+          <Button variant="primary" onClick={props.handleAddSession}>
             Save changes
           </Button>
         </Modal.Footer>
       </Modal.Dialog>
     </div>
-  );
+  )
 }
