@@ -192,19 +192,32 @@ Router.get('/batch/:id', async (req, res) => {
                             },
                         },
                         {
+                            $addFields: {
+                              sessions: {
+                                $cond: {
+                                  if: {
+                                    $ne: [{ $type: '$session' }, 'array'],
+                                  },
+                                  then: [],
+                                  else: '$session',
+                                },
+                              },
+                            },
+                        },
+                        {
                             $lookup: {
                                 from: "sessions",
-                                let: { sessions: '$sessions' },
+                                let: { session: '$session' },
                                 pipeline: [
                                     {
                                         $match: {
                                             $expr: {
-                                                $in: ['$_id', '$$sessions'],
+                                                $in: ['$_id', '$$session'],
                                             },
                                         },
                                     }
                                 ],
-                                as:'sessions'
+                                as:'session'
                             }
                         },
                     ],
